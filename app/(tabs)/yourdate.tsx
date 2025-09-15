@@ -1,5 +1,6 @@
 import { Collapsible } from "@/components/Collapsible";
 import { ThemedText } from "@/components/ThemedText";
+import DateTimePicker from '@react-native-community/datetimepicker';
 import { useState } from "react";
 import { SafeAreaView, Text, TextInput, View } from "react-native";
 import { ScrollView } from "react-native-gesture-handler";
@@ -9,6 +10,7 @@ export default function YourDate() {
 
   const [numString, setNumString] = useState("");
 
+  // Palindrome
   const isPalindrome = () => {
     //remove leading spaces
     const numClean = numString.trim();
@@ -32,8 +34,7 @@ export default function YourDate() {
     }
     // reversing the string
     
-    // returning a booleon
-    return reverse === numString;
+  
 
   }
 
@@ -47,7 +48,9 @@ export default function YourDate() {
     >
       <SafeAreaView>
         <View>
-          <DateTimePicker></DateTimePicker>
+          <DateTimePicker
+          display="default"
+          ></DateTimePicker>
           <Text></Text>
           <TextInput
           value={numString}
