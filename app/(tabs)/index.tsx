@@ -7,7 +7,6 @@ import { SafeAreaView, Text, TextInput, View } from "react-native";
 export default function YourDate() {
 
   const [numString, setNumString] = useState("");
-  const [date, setDate] = useState(new Date());
 
   // Palindrome
   const isPalindrome = () => {
@@ -24,7 +23,6 @@ export default function YourDate() {
   }
 
   // Pythagorean day^2 + month^2 = year^2
-
   const isPyth = () => {
     let day = parseInt(numString.slice(0, 2));
     let month = parseInt(numString.slice(2, 4));
@@ -37,6 +35,29 @@ export default function YourDate() {
     
     let quared = (day * day) + (month * month);
     return quared === year * year;
+  }
+
+  const isPerPower = () => {
+    let num = parseInt(numString);
+
+    // return empty
+    if (numString === "") {
+      return false;
+    }
+    
+    let squared = Math.sqrt(num);
+    let cubed = Math.cbrt(num);
+    if(Number.isInteger(squared)) {
+      return true;
+    }
+    else if(Number.isInteger(cubed)) {
+      return true;
+    }
+    else {
+      return false;
+    }
+  
+   
   }
 
   return (
@@ -65,16 +86,30 @@ export default function YourDate() {
       {isPalindrome() && (
         <Collapsible title="Palindrome">
           <ThemedText>This number is the same backwards and forwards!</ThemedText>
+          <ThemedText>Ex. 022220 is the same!</ThemedText>
         </Collapsible>
       )}
       {/* Pythagorean*/}
       {isPyth() && (
         <Collapsible title="Pythagorean">
           <ThemedText>This number is the day squared times itself and the month times itself equals the year </ThemedText>
+          <ThemedText>July 24th, 2025 \(7 24 25) is 7^2 + 24^2 = 25^2 (^2 is squared)</ThemedText>
         </Collapsible>
       )}
       {/* Perfect Power */}
+      {isPerPower() && (
+        <Collapsible title="Perfect Power">
+          <ThemedText>This date as a number is a perfect square or cube!</ThemedText>
+          <ThemedText>Ex. 9/27/2025 is 9272025 = 3045^2</ThemedText>
+        </Collapsible>
+      )}
       {/* Armstrong */}
+      {isArmstrong() && (
+        <Collapsible title="Narcissistic / Armstrong ">
+          <ThemedText>a number that is equal to the sum of its own digits, each raised to the power of the number of digits</ThemedText>
+          <ThemedText>Ex. 371 = 3^3 + 7^3 + 1^3 </ThemedText>
+        </Collapsible>
+      )}
       {/* Equation */}
 
       {/* Hex code */}
