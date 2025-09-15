@@ -7,6 +7,7 @@ import { SafeAreaView, Text, TextInput, View } from "react-native";
 export default function YourDate() {
 
   const [numString, setNumString] = useState("");
+  const [sumStr, setSumStr] = useState("");
 
   // Palindrome
   const isPalindrome = () => {
@@ -37,6 +38,7 @@ export default function YourDate() {
     return quared === year * year;
   }
 
+  // Perfect Power
   const isPerPower = () => {
     let num = parseInt(numString);
 
@@ -56,8 +58,55 @@ export default function YourDate() {
     else {
       return false;
     }
-  
-   
+  }
+
+  const isArmstrong = () => {
+    let lastNum = 0;
+    for(let i = 0; i < numString.length; i++) {
+      lastNum += parseInt(numString[i]) ** numString.length;
+    }
+
+    // return empty
+    if (numString === "") {
+      return false;
+    }
+
+    return lastNum === parseInt(numString);
+  }
+
+  const isEquation = () => {
+    let day = parseInt(numString.slice(0, 2));
+    let month = parseInt(numString.slice(2, 4));
+    let year = parseInt(numString.slice(4, 6));
+
+    // return empty
+    if (numString === "") {
+      return false;
+    }
+
+    if(day + month === year) {
+      setSumStr("plus");
+      return true;
+    }
+    else if (day - month === year ) {
+      setSumStr("minus");
+      return true;
+    }
+    else if (day * month == year) {
+      setSumStr("multiplied by")
+      return true;
+    }
+    else if (day / month == year) {
+      setSumStr("divided by")
+      return true;
+    }
+    else if (day ** month === year) {
+      setSumStr("to the power of");
+      return true
+    }
+    else {
+      return false;
+    }
   }
 
   return (
@@ -111,15 +160,17 @@ export default function YourDate() {
         </Collapsible>
       )}
       {/* Equation */}
+      {isEquation() && (
+        <Collapsible title="Equation of Day Month = Year">
+          <ThemedText>This day {sumStr} month equals the year! </ThemedText>
+          <ThemedText>Ex. 7 + 7 = (20)14 (day plus month = year) </ThemedText>
+        </Collapsible>
+      )}
 
       {/* Hex code */}
       {/* HSL code */}
 
 
-
-
-      <Text>Day Goes Here</Text>
-      <TextInput></TextInput>
 
     </View>
   );
