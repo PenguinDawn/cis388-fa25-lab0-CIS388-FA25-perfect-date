@@ -1,5 +1,6 @@
 import { Collapsible } from "@/components/Collapsible";
 import { ThemedText } from "@/components/ThemedText";
+import { ThemedView } from "@/components/ThemedView";
 import { useState } from "react";
 import { SafeAreaView, Text, TextInput, View } from "react-native";
 
@@ -127,6 +128,8 @@ export default function YourDate() {
       {/* Submit Button */}
 
       {/* Conditional */}
+
+      <ThemedText>This date is special because it is...</ThemedText>
       {/* Prime */}
       <Collapsible title="Prime">
         <ThemedText>This Number is only divisible by itself!</ThemedText>
@@ -167,6 +170,10 @@ export default function YourDate() {
         </Collapsible>
       )}
 
+      <ThemedView>
+        <ThemedText></ThemedText>
+
+      </ThemedView>
       {/* Hex code */}
       {/* HSL code */}
 
