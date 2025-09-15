@@ -10,18 +10,31 @@ export default function YourDate() {
   const [numString, setNumString] = useState("");
 
   const isPalindrome = () => {
-
     //remove leading spaces
     const numClean = numString.trim();
-
     // return empty
     if (numClean === "") {
       return false;
     }
-
+    // reversing the string
     const reverse = numClean.split('').reverse().join("");
-    
+    // returning a booleon
     return reverse === numString;
+  }
+
+  // Pythagorean day^2 + month^2 = year^2
+
+  const isPyth = () => {
+    let numPal = parseFloat(numString)
+    // return empty
+    if (isNaN(numPal) === true) {
+      return false;
+    }
+    // reversing the string
+    
+    // returning a booleon
+    return reverse === numString;
+
   }
 
   return (
@@ -34,6 +47,7 @@ export default function YourDate() {
     >
       <SafeAreaView>
         <View>
+          <DateTimePicker></DateTimePicker>
           <Text></Text>
           <TextInput
           value={numString}
@@ -53,14 +67,17 @@ export default function YourDate() {
         <ThemedText></ThemedText>
       </Collapsible>
       {/* Palindrome */}
-
       {isPalindrome() && (
         <Collapsible title="Palindrome">
-          <ThemedText></ThemedText>
+          <ThemedText>This number is the same backwards and forwards!</ThemedText>
         </Collapsible>
       )}
-      
-      {/* Patagorium */}
+      {/* Pythagorean*/}
+      {isPyth() && (
+        <Collapsible title="Pythagorean">
+          <ThemedText>This number is the day squared times itself and the month times itself equals the year </ThemedText>
+        </Collapsible>
+      )}
       {/* Perfect Power */}
       {/* Armstrong */}
       {/* Equation */}
