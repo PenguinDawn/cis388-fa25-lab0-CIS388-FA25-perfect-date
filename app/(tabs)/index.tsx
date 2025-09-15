@@ -1,6 +1,5 @@
 import { Collapsible } from "@/components/Collapsible";
 import { ThemedText } from "@/components/ThemedText";
-import DateTimePicker from '@react-native-community/datetimepicker';
 import { useState } from "react";
 import { SafeAreaView, Text, TextInput, View } from "react-native";
 
@@ -27,31 +26,28 @@ export default function YourDate() {
   // Pythagorean day^2 + month^2 = year^2
 
   const isPyth = () => {
-    let numPal = parseFloat(numString)
+    let day = parseInt(numString.slice(0, 2));
+    let month = parseInt(numString.slice(2, 4));
+    let year = parseInt(numString.slice(4, 6));
+
     // return empty
-    if (isNaN(numPal) === true) {
+    if (numString === "") {
       return false;
     }
-    // reversing the string
     
-  
-
+    let quared = (day * day) + (month * month);
+    return quared === year * year;
   }
 
   return (
-    <View
-    >
+    <View>
       <SafeAreaView>
         <View>
-          <DateTimePicker
-          display="default"
-          value={date}
-          ></DateTimePicker>
-          <Text></Text>
+
+        <Text>This is the day/month/year</Text>
           <TextInput
           value={numString}
           onChangeText={setNumString}
-          
           ></TextInput>
         </View>
       </SafeAreaView>
