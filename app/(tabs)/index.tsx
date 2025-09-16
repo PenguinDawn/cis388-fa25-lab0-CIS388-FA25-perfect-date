@@ -11,6 +11,8 @@ export default function YourDate() {
   const [sumStr, setSumStr] = useState("");
   const [colored, setColor] = useState("");
   const [colored2, setColor2] = useState("");
+  const [coloredH, setColorH] = useState("");
+  const [coloredH2, setColorH2] = useState("");
 
   // Prime
   const isPrime = () => {
@@ -109,7 +111,7 @@ export default function YourDate() {
 
     let day = parseInt(numClean.slice(0, 2));
     let month = parseInt(numClean.slice(2, 4));
-    let year = parseInt(numClean.slice(4, 6));
+    let year = parseInt(numClean.slice(4, ));
 
     if(day + month === year) {
       setSumStr("plus");
@@ -119,11 +121,11 @@ export default function YourDate() {
       setSumStr("minus");
       return true;
     }
-    else if (day * month == year) {
+    else if (day * month === year) {
       setSumStr("multiplied by")
       return true;
     }
-    else if (day / month == year) {
+    else if (day / month === year) {
       setSumStr("divided by")
       return true;
     }
@@ -145,10 +147,13 @@ export default function YourDate() {
 
     let day = numClean.slice(0, 2);
     let month = numClean.slice(2, 4);
-    let year = numClean.slice(4, 6);
+    let year = numClean.slice(-2, );
 
     setColor("#" + day + month + year)
     setColor2("#" + month + day + year)
+    setColorH("hsl(" + day + ","+ month + "%,"+ year + "%)")
+    setColorH2("hsl(" + day + ","+ month + "%,"+ year + "%)")
+
   }
 
   return (
@@ -218,7 +223,7 @@ export default function YourDate() {
       {/* Hex code */}
       <ThemedView>
         <ThemedText>Here are your colors for the date!</ThemedText>
-        <View className=""></View>
+        <View></View>
 
       </ThemedView>
       
