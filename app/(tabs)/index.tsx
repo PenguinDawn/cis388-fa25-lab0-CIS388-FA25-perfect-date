@@ -9,6 +9,8 @@ export default function YourDate() {
 
   const [numString, setNumString] = useState("");
   const [sumStr, setSumStr] = useState("");
+  const [colored, setColor] = useState("");
+  const [colored2, setColor2] = useState("");
 
   // Prime
   const isPrime = () => {
@@ -134,6 +136,21 @@ export default function YourDate() {
     }
   }
 
+  const runColor = () => {
+    const numClean = numString.trim();
+    // return empty
+    if (numClean === "") {
+      return false;
+    }
+
+    let day = numClean.slice(0, 2);
+    let month = numClean.slice(2, 4);
+    let year = numClean.slice(4, 6);
+
+    setColor("#" + day + month + year)
+    setColor2("#" + month + day + year)
+  }
+
   return (
     <View>
       <SafeAreaView>
@@ -201,7 +218,7 @@ export default function YourDate() {
       {/* Hex code */}
       <ThemedView>
         <ThemedText>Here are your colors for the date!</ThemedText>
-        <View></View>
+        <View className=""></View>
 
       </ThemedView>
       
