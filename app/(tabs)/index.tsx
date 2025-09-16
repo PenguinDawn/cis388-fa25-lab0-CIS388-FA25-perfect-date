@@ -5,14 +5,31 @@ import { useState } from "react";
 import { SafeAreaView, Text, TextInput, View } from "react-native";
 
 
+// This is the function we're returning
+
 export default function YourDate() {
 
+  // constants we're using in the app
   const [numString, setNumString] = useState("");
+  const [submitted, setSubmit] = useState(false);
   const [sumStr, setSumStr] = useState("");
   const [colored, setColor] = useState("");
   const [colored2, setColor2] = useState("");
   const [coloredH, setColorH] = useState("");
   const [coloredH2, setColorH2] = useState("");
+
+  //Submitted
+  const isSubmitted = () => {
+    setSubmit(true)
+    isPrime();
+    isPalindrome();
+    isArmstrong();
+    isEquation();
+    isPyth();
+    isPerPower();
+  }
+
+  // Checking the numbers function
 
   // Prime
   const isPrime = () => {
@@ -85,30 +102,24 @@ export default function YourDate() {
   }
 
   const isArmstrong = () => {
-
     const numClean = numString.trim();
-    // return empty
     if (numClean === "") {
       return false;
     }
-
+    // Squaring it
     let lastNum = 0;
     for(let i = 0; i < numClean.length; i++) {
       lastNum += parseInt(numClean[i]) ** numClean.length;
     }
-
-
     return lastNum === parseInt(numClean);
   }
 
   const isEquation = () => {
-
     const numClean = numString.trim();
     // return empty
     if (numClean === "") {
       return false;
     }
-
     let day = parseInt(numClean.slice(0, 2));
     let month = parseInt(numClean.slice(2, 4));
     let year = parseInt(numClean.slice(4, ));
@@ -138,6 +149,8 @@ export default function YourDate() {
     }
   }
 
+  // Getting the colors!
+
   const runColor = () => {
     const numClean = numString.trim();
     // return empty
@@ -153,7 +166,6 @@ export default function YourDate() {
     setColor2("#" + month + day + year)
     setColorH("hsl(" + day + ","+ month + "%,"+ year + "%)")
     setColorH2("hsl(" + day + ","+ month + "%,"+ year + "%)")
-
   }
 
   return (
@@ -223,7 +235,31 @@ export default function YourDate() {
       {/* Hex code */}
       <ThemedView>
         <ThemedText>Here are your colors for the date!</ThemedText>
-        <View style={{backgroundColor: colored}}></View>
+        
+        <View>
+          <ThemedText>Hex Colors!</ThemedText>
+          <View>
+            <ThemedText>Day, Month, Year Hex Code</ThemedText>
+            <View style={{backgroundColor: colored, width: 50, height: 50}}></View>
+          </View>
+          <View>
+            <ThemedText>Month, Day, Year Hex Code</ThemedText>
+            <View style={{backgroundColor: colored2, width: 50, height: 50}}></View>
+          </View>
+        </View>
+
+        <View>
+          <ThemedText>HSL Colors!</ThemedText>
+          <View>
+            <ThemedText>Day, Month, Year HSL Code</ThemedText>
+            <View style={{backgroundColor: coloredH, width: 50, height: 50}}></View>
+          </View>
+          <View>
+            <ThemedText>Month, Day, Year HSL Code</ThemedText>
+            <View style={{backgroundColor: coloredH2, width: 50, height: 50}}></View>
+          </View>
+        </View>
+        
 
       </ThemedView>
       
