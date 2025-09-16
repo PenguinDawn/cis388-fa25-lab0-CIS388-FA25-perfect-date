@@ -223,7 +223,7 @@ export default function YourDate() {
       {/* Hex code */}
       <ThemedView>
         <ThemedText>Here are your colors for the date!</ThemedText>
-        <View></View>
+        <View style={{backgroundColor: colored}}></View>
 
       </ThemedView>
       
