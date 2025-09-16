@@ -10,6 +10,20 @@ export default function YourDate() {
   const [numString, setNumString] = useState("");
   const [sumStr, setSumStr] = useState("");
 
+  // Prime
+  const isPrime = () => {
+    //remove leading spaces
+    const numClean = numString.trim();
+    // return empty
+    if (numClean === "") {
+      return false;
+    }
+    // reversing the string
+    const reverse = numClean.split('').reverse().join("");
+    // returning a booleon
+    return reverse === numString;
+  }
+
   // Palindrome
   const isPalindrome = () => {
     //remove leading spaces
@@ -26,14 +40,17 @@ export default function YourDate() {
 
   // Pythagorean day^2 + month^2 = year^2
   const isPyth = () => {
-    let day = parseInt(numString.slice(0, 2));
-    let month = parseInt(numString.slice(2, 4));
-    let year = parseInt(numString.slice(4, 6));
 
+    //remove leading spaces
+    const numClean = numString.trim();
     // return empty
-    if (numString === "") {
+    if (numClean === "") {
       return false;
     }
+    // return empty
+    let day = parseInt(numClean.slice(0, 2));
+    let month = parseInt(numClean.slice(2, 4));
+    let year = parseInt(numClean.slice(4, 6));
     
     let quared = (day * day) + (month * month);
     return quared === year * year;
@@ -41,12 +58,14 @@ export default function YourDate() {
 
   // Perfect Power
   const isPerPower = () => {
-    let num = parseInt(numString);
-
+    //remove leading spaces
+    const numClean = numString.trim();
     // return empty
-    if (numString === "") {
+    if (numClean === "") {
       return false;
     }
+
+    let num = parseInt(numClean);
     
     let squared = Math.sqrt(num);
     let cubed = Math.cbrt(num);
@@ -62,28 +81,33 @@ export default function YourDate() {
   }
 
   const isArmstrong = () => {
-    let lastNum = 0;
-    for(let i = 0; i < numString.length; i++) {
-      lastNum += parseInt(numString[i]) ** numString.length;
-    }
 
+    const numClean = numString.trim();
     // return empty
-    if (numString === "") {
+    if (numClean === "") {
       return false;
     }
 
-    return lastNum === parseInt(numString);
+    let lastNum = 0;
+    for(let i = 0; i < numClean.length; i++) {
+      lastNum += parseInt(numClean[i]) ** numClean.length;
+    }
+
+
+    return lastNum === parseInt(numClean);
   }
 
   const isEquation = () => {
-    let day = parseInt(numString.slice(0, 2));
-    let month = parseInt(numString.slice(2, 4));
-    let year = parseInt(numString.slice(4, 6));
 
+    const numClean = numString.trim();
     // return empty
-    if (numString === "") {
+    if (numClean === "") {
       return false;
     }
+
+    let day = parseInt(numClean.slice(0, 2));
+    let month = parseInt(numClean.slice(2, 4));
+    let year = parseInt(numClean.slice(4, 6));
 
     if(day + month === year) {
       setSumStr("plus");
@@ -131,9 +155,12 @@ export default function YourDate() {
 
       <ThemedText>This date is special because it is...</ThemedText>
       {/* Prime */}
-      <Collapsible title="Prime">
-        <ThemedText>This Number is only divisible by itself!</ThemedText>
-      </Collapsible>
+      {isPrime() && (
+        <Collapsible title="Prime">
+          <ThemedText>This Number is only divisible by itself!</ThemedText>
+          <ThemedText>Ex. 3, 13, 53</ThemedText>
+        </Collapsible>
+      )}
       {/* Palindrome */}
       {isPalindrome() && (
         <Collapsible title="Palindrome">
@@ -170,11 +197,14 @@ export default function YourDate() {
         </Collapsible>
       )}
 
+
+      {/* Hex code */}
       <ThemedView>
-        <ThemedText></ThemedText>
+        <ThemedText>Here are your colors for the date!</ThemedText>
+        <View></View>
 
       </ThemedView>
-      {/* Hex code */}
+      
       {/* HSL code */}
 
 
