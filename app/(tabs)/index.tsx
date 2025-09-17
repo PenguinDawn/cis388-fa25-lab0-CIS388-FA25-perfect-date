@@ -10,6 +10,7 @@ import { Button, SafeAreaView, Text, TextInput, View } from "react-native";
 export default function YourDate() {
 
   // constants we're using in the app
+  const [valid, setValid] = useState(false);
 
   // sets our input
   const [numString, setNumString] = useState("");
@@ -217,7 +218,7 @@ export default function YourDate() {
 
           <Text>This is the day/month/year</Text>
             <TextInput
-            style={{borderColor: "black", borderStyle: "solid"}}
+            style={{borderColor: "black", borderStyle: "solid", border: 2}}
             value={numString}
             onChangeText={setNumString}
             ></TextInput>
@@ -227,7 +228,7 @@ export default function YourDate() {
 
       {/* Input the Date */}
       {/* Submit Button */}
-      <Button title="Submit" onPress={isSubmitted}></Button>
+      <Button title="Submit" onPress={isSubmitted} disabled={valid}></Button>
 
       {/* Conditionals */}
 
