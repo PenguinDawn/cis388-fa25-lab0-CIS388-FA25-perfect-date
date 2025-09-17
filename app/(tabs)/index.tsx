@@ -84,9 +84,20 @@ export default function YourDate() {
       return false;
     }
     // return empty
-    let day = parseInt(numClean.slice(0, 2));
-    let month = parseInt(numClean.slice(2, 4));
-    let year = parseInt(numClean.slice(4, 6));
+    let day;
+    let month;
+    let year;
+    if(numClean.length === 5) {
+       day = parseInt(numClean.slice(0, 1));
+       month = parseInt(numClean.slice(1, 3));
+       year = parseInt(numClean.slice(-2, ));
+    }
+    else {
+       day = parseInt(numClean.slice(0, 2));
+       month = parseInt(numClean.slice(2, 4));
+       year = parseInt(numClean.slice(-2, ));
+    }
+    
     
     let quared = (day * day) + (month * month);
     return quared === year * year;
@@ -139,9 +150,19 @@ export default function YourDate() {
     if (numClean === "") {
       return false;
     }
-    let day = parseInt(numClean.slice(0, 2));
-    let month = parseInt(numClean.slice(2, 4));
-    let year = parseInt(numClean.slice(4, ));
+    let day;
+    let month;
+    let year;
+    if(numClean.length === 5) {
+       day = parseInt(numClean.slice(0, 1));
+       month = parseInt(numClean.slice(1, 3));
+       year = parseInt(numClean.slice(-2, ));
+    }
+    else {
+       day = parseInt(numClean.slice(0, 2));
+       month = parseInt(numClean.slice(2, 4));
+       year = parseInt(numClean.slice(-2, ));
+    }
 
     if(day + month === year) {
       setSumStr("plus");
