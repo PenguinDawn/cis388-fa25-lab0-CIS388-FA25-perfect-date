@@ -217,6 +217,7 @@ export default function YourDate() {
 
           <Text>This is the day/month/year</Text>
             <TextInput
+            style={{borderColor: "black", borderStyle: "solid"}}
             value={numString}
             onChangeText={setNumString}
             ></TextInput>
@@ -230,7 +231,7 @@ export default function YourDate() {
 
       {/* Conditionals */}
 
-      <ThemedText>This date is special because it is...</ThemedText>
+      <Text>This date is special because it is...</Text>
       {/* Prime */}
       {primed && (
         <Collapsible title="Prime">
@@ -273,6 +274,8 @@ export default function YourDate() {
           <ThemedText>Ex. 7 + 7 = (20)14 (day plus month = year) </ThemedText>
         </Collapsible>
       )}
+
+      <View style={{ width: 50, height: 50}}></View>
 
 
       {/* Hex code */}
