@@ -2,7 +2,7 @@ import { Collapsible } from "@/components/Collapsible";
 import { ThemedText } from "@/components/ThemedText";
 import { ThemedView } from "@/components/ThemedView";
 import { useState } from "react";
-import { SafeAreaView, Text, TextInput, View } from "react-native";
+import { Button, SafeAreaView, Text, TextInput, View } from "react-native";
 
 
 // This is the function we're returning
@@ -177,10 +177,13 @@ export default function YourDate() {
     setColorH2("hsl(" + day + ","+ month + "%,"+ year + "%)")
   }
 
+  // and here is our actual app ------------------------------------
+
   return (
     <View>
-      <SafeAreaView>
+      <SafeAreaView> 
         <View>
+
           <Text>This is the day/month/year</Text>
             <TextInput
             value={numString}
@@ -192,8 +195,9 @@ export default function YourDate() {
 
       {/* Input the Date */}
       {/* Submit Button */}
+      <Button title="Submit" onPress={isSubmitted}></Button>
 
-      {/* Conditional */}
+      {/* Conditionals */}
 
       <ThemedText>This date is special because it is...</ThemedText>
       {/* Prime */}
