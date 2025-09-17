@@ -284,8 +284,7 @@ export default function YourDate() {
 
       </ThemedView>
       
-      {/* HSL code */}
-    </View>
+      </View>
   );
 }
 
