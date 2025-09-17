@@ -172,12 +172,11 @@ export default function YourDate() {
     <View>
       <SafeAreaView>
         <View>
-
-        <Text>This is the day/month/year</Text>
-          <TextInput
-          value={numString}
-          onChangeText={setNumString}
-          ></TextInput>
+          <Text>This is the day/month/year</Text>
+            <TextInput
+            value={numString}
+            onChangeText={setNumString}
+            ></TextInput>
         </View>
       </SafeAreaView>
 
@@ -235,7 +234,6 @@ export default function YourDate() {
       {/* Hex code */}
       <ThemedView>
         <ThemedText>Here are your colors for the date!</ThemedText>
-        
         <View>
           <ThemedText>Hex Colors!</ThemedText>
           <View>
