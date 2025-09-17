@@ -38,6 +38,42 @@ export default function YourDate() {
 
   //Submitted
   const isSubmitted = () => {
+    setDayStr(dayStr.trim());
+    setMonthStr(monthStr.trim());
+    setYearStr(yearStr.trim());
+
+
+    if(parseInt(dayStr) < 32 && parseInt(dayStr) > 0 && Number.isInteger(parseInt(dayStr))){
+      if(parseInt(dayStr) < 10) {
+        setDayStr("0" + dayStr);
+      }
+      else {
+        setDayStr(dayStr);
+      }
+    }
+    else {
+      setValid(false);
+      
+    }
+
+    if(parseInt(monthStr) < 13 && parseInt(monthStr) > 0 && Number.isInteger(parseInt(monthStr))){
+      if(parseInt(monthStr) < 10) {
+        setMonthStr("0" + monthStr);
+      }
+      else {
+        setMonthStr(monthStr);
+      }
+    }
+
+    if(parseInt(yearStr) < 2501 && parseInt(yearStr) > 0 && Number.isInteger(parseInt(yearStr))){
+      if(parseInt(yearStr) < 10) {
+        setYearStr("0" + yearStr);
+      }
+      else {
+        setYearStr(yearStr);
+      }
+    }
+
     if(valid) {
       setPrime(isPrime());
       setPali(isPalindrome());
@@ -229,14 +265,30 @@ export default function YourDate() {
     <View>
       <SafeAreaView> 
         <View>
-
-          <Text>This is the day/month/year</Text>
+          <Text>Day</Text>
             <TextInput
             style={{borderColor: "black", borderStyle: "solid", borderWidth: 2}}
-            value={numString}
-            onChangeText={setNumString}
+            value={dayStr}
+            onChangeText={setDayStr}
             ></TextInput>
         </View>
+        <View>
+          <Text>Month</Text>
+            <TextInput
+            style={{borderColor: "black", borderStyle: "solid", borderWidth: 2}}
+            value={monthStr}
+            onChangeText={setMonthStr}
+            ></TextInput>
+        </View>
+        <View>
+          <Text>Year</Text>
+            <TextInput
+            style={{borderColor: "black", borderStyle: "solid", borderWidth: 2}}
+            value={yearStr}
+            onChangeText={setYearStr}
+            ></TextInput>
+        </View>
+
       </SafeAreaView>
 
       {/* Submit Button */}
