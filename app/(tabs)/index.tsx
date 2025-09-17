@@ -10,7 +10,9 @@ import { Button, SafeAreaView, Text, TextInput, View } from "react-native";
 export default function YourDate() {
 
   // constants we're using in the app
-  const [valid, setValid] = useState(false);
+  const [valid, setValid] = useState(true);
+  const [next, setNext] = useState("");
+
 
   // sets our input
   const [numString, setNumString] = useState("");
@@ -31,6 +33,7 @@ export default function YourDate() {
 
   //Submitted
   const isSubmitted = () => {
+
     setPrime(isPrime());
     setPali(isPalindrome());
     setArm(isArmstrong());
@@ -41,6 +44,7 @@ export default function YourDate() {
   }
 
   // -------------- Here are the conditions for our date --------------------
+
 
   // Prime -----------------------------------------
   const isPrime = () => {
@@ -218,7 +222,7 @@ export default function YourDate() {
 
           <Text>This is the day/month/year</Text>
             <TextInput
-            style={{borderColor: "black", borderStyle: "solid", border: 2}}
+            style={{borderColor: "black", borderStyle: "solid", borderWidth: 2}}
             value={numString}
             onChangeText={setNumString}
             ></TextInput>
@@ -228,7 +232,7 @@ export default function YourDate() {
 
       {/* Input the Date */}
       {/* Submit Button */}
-      <Button title="Submit" onPress={isSubmitted} disabled={valid}></Button>
+      <Button title="Submit" onPress={isSubmitted}></Button>
 
       {/* Conditionals */}
 
