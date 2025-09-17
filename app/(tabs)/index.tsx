@@ -49,6 +49,7 @@ export default function YourDate() {
     setValid(isThisGood());
 
 
+
     if(valid) {
       setNext("This date is special because it is...");
       setNumString(dayStr + monthStr + yearStr)
@@ -88,8 +89,9 @@ export default function YourDate() {
       return false;
     }
 
-    if(parseInt(yearStr) < 2501 && parseInt(yearStr) > 0 && Number.isInteger(parseInt(yearStr) && yearStr !== "")){
+    if(parseInt(yearStr) < 2501 && parseInt(yearStr) > 0 && Number.isInteger(parseInt(yearStr)) && yearStr !== ""){
       if(parseInt(yearStr) < 10 && yearStr[0] !== "0") {
+        
         setYearStr("0" + yearStr);
       } else {
         setYearStr(yearStr);
@@ -301,6 +303,8 @@ export default function YourDate() {
             onChangeText={setYearStr}
             ></TextInput>
         </View>
+
+        <Text style={{color: "red",}}>False</Text>
 
       </SafeAreaView>
 
