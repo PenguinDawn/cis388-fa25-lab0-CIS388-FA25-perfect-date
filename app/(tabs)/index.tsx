@@ -10,23 +10,33 @@ import { Button, SafeAreaView, Text, TextInput, View } from "react-native";
 export default function YourDate() {
 
   // constants we're using in the app
+
+  // sets our input
   const [numString, setNumString] = useState("");
-  const [submitted, setSubmit] = useState(false);
-  const [sumStr, setSumStr] = useState("");
   const [colored, setColor] = useState("");
   const [colored2, setColor2] = useState("");
   const [coloredH, setColorH] = useState("");
   const [coloredH2, setColorH2] = useState("");
 
+  // for the conditional renderings
+  const [primed, setPrime] = useState(false);
+  const [pali, setPali] = useState(false);
+  const [arm, setArm] = useState(false);
+  const [equa, setEqua] = useState(false);
+  const [sumStr, setSumStr] = useState("");
+  const [pyth, setPyth] = useState(false);
+  const [perPow, setPerPow] = useState(false);
+  
+
   //Submitted
   const isSubmitted = () => {
-    setSubmit(true)
-    isPrime();
-    isPalindrome();
-    isArmstrong();
-    isEquation();
-    isPyth();
-    isPerPower();
+    setPrime(isPrime());
+    setPali(isPalindrome());
+    setArm(isArmstrong());
+    setEqua(isEquation());
+    setPyth(isPyth());
+    setPerPow(isPerPower());
+    runColor();
   }
 
   // -------------- Here are the conditions for our date --------------------
@@ -201,42 +211,42 @@ export default function YourDate() {
 
       <ThemedText>This date is special because it is...</ThemedText>
       {/* Prime */}
-      {isPrime() && (
+      {primed && (
         <Collapsible title="Prime">
           <ThemedText>This Number is only divisible by itself!</ThemedText>
           <ThemedText>Ex. 3, 13, 53</ThemedText>
         </Collapsible>
       )}
       {/* Palindrome */}
-      {isPalindrome() && (
+      {pali && (
         <Collapsible title="Palindrome">
           <ThemedText>This number is the same backwards and forwards!</ThemedText>
           <ThemedText>Ex. 022220 is the same!</ThemedText>
         </Collapsible>
       )}
       {/* Pythagorean*/}
-      {isPyth() && (
+      {pyth && (
         <Collapsible title="Pythagorean">
           <ThemedText>This number is the day squared times itself and the month times itself equals the year </ThemedText>
           <ThemedText>July 24th, 2025 \(7 24 25) is 7^2 + 24^2 = 25^2 (^2 is squared)</ThemedText>
         </Collapsible>
       )}
       {/* Perfect Power */}
-      {isPerPower() && (
+      {perPow && (
         <Collapsible title="Perfect Power">
           <ThemedText>This date as a number is a perfect square or cube!</ThemedText>
           <ThemedText>Ex. 9/27/2025 is 9272025 = 3045^2</ThemedText>
         </Collapsible>
       )}
       {/* Armstrong */}
-      {isArmstrong() && (
+      {arm && (
         <Collapsible title="Narcissistic / Armstrong ">
           <ThemedText>a number that is equal to the sum of its own digits, each raised to the power of the number of digits</ThemedText>
           <ThemedText>Ex. 371 = 3^3 + 7^3 + 1^3 </ThemedText>
         </Collapsible>
       )}
       {/* Equation */}
-      {isEquation() && (
+      {equa && (
         <Collapsible title="Equation of Day Month = Year">
           <ThemedText>This day {sumStr} month equals the year! </ThemedText>
           <ThemedText>Ex. 7 + 7 = (20)14 (day plus month = year) </ThemedText>
@@ -275,9 +285,6 @@ export default function YourDate() {
       </ThemedView>
       
       {/* HSL code */}
-
-
-
     </View>
   );
 }
