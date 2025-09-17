@@ -34,13 +34,19 @@ export default function YourDate() {
   //Submitted
   const isSubmitted = () => {
 
-    setPrime(isPrime());
-    setPali(isPalindrome());
-    setArm(isArmstrong());
-    setEqua(isEquation());
-    setPyth(isPyth());
-    setPerPow(isPerPower());
-    runColor();
+    if(valid) {
+      setPrime(isPrime());
+      setPali(isPalindrome());
+      setArm(isArmstrong());
+      setEqua(isEquation());
+      setPyth(isPyth());
+      setPerPow(isPerPower());
+      runColor();
+      setNext("This date is special because it is...");
+    }
+    else {
+      setNext("Your input is not valid!")
+    }
   }
 
   // -------------- Here are the conditions for our date --------------------
@@ -236,7 +242,7 @@ export default function YourDate() {
 
       {/* Conditionals */}
 
-      <Text>This date is special because it is...</Text>
+      <Text>{next}</Text>
       {/* Prime */}
       {primed && (
         <Collapsible title="Prime">
