@@ -59,7 +59,7 @@ export default function YourDate() {
     }
 
     if(parseInt(monthStr) < 13 && parseInt(monthStr) > 0 && Number.isInteger(parseInt(monthStr)) && monthStr !== ""){
-      if(parseInt(monthStr) < 10) {
+      if(parseInt(monthStr) < 10 && monthStr[0] !== "0") {
         setMonthStr("0" + monthStr);
       }
       else {
@@ -72,7 +72,7 @@ export default function YourDate() {
     }
 
     if(parseInt(yearStr) < 2501 && parseInt(yearStr) > 0 && Number.isInteger(parseInt(yearStr) && yearStr !== "")){
-      if(parseInt(yearStr) < 10) {
+      if(parseInt(yearStr) < 10 && yearStr[0] !== "0") {
         setYearStr("0" + yearStr);
       }
       else {
@@ -96,7 +96,7 @@ export default function YourDate() {
       runColor();
     }
     else {
-      setNext("is not valid!")
+      setNext(next + "is not valid!")
     }
   }
 
