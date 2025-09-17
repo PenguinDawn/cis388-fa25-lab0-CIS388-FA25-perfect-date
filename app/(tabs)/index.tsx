@@ -13,8 +13,8 @@ export default function YourDate() {
 
   // sets our input
   const [numString, setNumString] = useState("");
-  const [colored, setColor] = useState("");
-  const [colored2, setColor2] = useState("");
+  const [colored, setColor] = useState("#ffffff");
+  const [colored2, setColor2] = useState("#ffffff");
   const [coloredH, setColorH] = useState("");
   const [coloredH2, setColorH2] = useState("");
 
