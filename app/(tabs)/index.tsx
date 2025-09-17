@@ -53,7 +53,6 @@ export default function YourDate() {
     }
     else {
       setValid(false);
-      
     }
 
     if(parseInt(monthStr) < 13 && parseInt(monthStr) > 0 && Number.isInteger(parseInt(monthStr))){
@@ -64,6 +63,9 @@ export default function YourDate() {
         setMonthStr(monthStr);
       }
     }
+    else {
+      setValid(false);
+    }
 
     if(parseInt(yearStr) < 2501 && parseInt(yearStr) > 0 && Number.isInteger(parseInt(yearStr))){
       if(parseInt(yearStr) < 10) {
@@ -72,6 +74,9 @@ export default function YourDate() {
       else {
         setYearStr(yearStr);
       }
+    }
+    else {
+      setValid(false);
     }
 
     if(valid) {
