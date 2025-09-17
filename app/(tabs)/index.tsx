@@ -45,7 +45,7 @@ export default function YourDate() {
     setValid(true);
     setNext("");
 
-    if(parseInt(dayStr) < 32 && parseInt(dayStr) > 0 && Number.isInteger(parseInt(dayStr))){
+    if(parseInt(dayStr) < 32 && parseInt(dayStr) > 0 && Number.isInteger(parseInt(dayStr)) && dayStr !== ""){
       if(parseInt(dayStr) < 10) {
         setDayStr("0" + dayStr);
       }
@@ -58,7 +58,7 @@ export default function YourDate() {
       setNext("your day ")
     }
 
-    if(parseInt(monthStr) < 13 && parseInt(monthStr) > 0 && Number.isInteger(parseInt(monthStr))){
+    if(parseInt(monthStr) < 13 && parseInt(monthStr) > 0 && Number.isInteger(parseInt(monthStr)) && monthStr !== ""){
       if(parseInt(monthStr) < 10) {
         setMonthStr("0" + monthStr);
       }
@@ -71,7 +71,7 @@ export default function YourDate() {
       setNext(next + "your month ")
     }
 
-    if(parseInt(yearStr) < 2501 && parseInt(yearStr) > 0 && Number.isInteger(parseInt(yearStr))){
+    if(parseInt(yearStr) < 2501 && parseInt(yearStr) > 0 && Number.isInteger(parseInt(yearStr) && yearStr !== "")){
       if(parseInt(yearStr) < 10) {
         setYearStr("0" + yearStr);
       }
