@@ -29,9 +29,9 @@ export default function YourDate() {
     isPerPower();
   }
 
-  // Checking the numbers function
+  // -------------- Here are the conditions for our date --------------------
 
-  // Prime
+  // Prime -----------------------------------------
   const isPrime = () => {
     //remove leading spaces
     const numClean = numString.trim();
@@ -50,7 +50,7 @@ export default function YourDate() {
     return true; // No divisors found, it's prime
   };
 
-  // Palindrome
+  // Palindrome -------------------------
   const isPalindrome = () => {
     //remove leading spaces
     const numClean = numString.trim();
@@ -64,7 +64,7 @@ export default function YourDate() {
     return reverse === numString;
   }
 
-  // Pythagorean day^2 + month^2 = year^2
+  // Pythagorean day^2 + month^2 = year^2 ----------------------
   const isPyth = () => {
 
     //remove leading spaces
@@ -82,7 +82,7 @@ export default function YourDate() {
     return quared === year * year;
   }
 
-  // Perfect Power
+  // Perfect Power --------------------------------------
   const isPerPower = () => {
     //remove leading spaces
     const numClean = numString.trim();
@@ -106,6 +106,8 @@ export default function YourDate() {
     }
   }
 
+  // Armstrong -----------------------------------------------------
+
   const isArmstrong = () => {
     const numClean = numString.trim();
     if (numClean === "") {
@@ -118,6 +120,8 @@ export default function YourDate() {
     }
     return lastNum === parseInt(numClean);
   }
+
+  // equation ---------------------------------------------------
 
   const isEquation = () => {
     const numClean = numString.trim();
@@ -154,7 +158,7 @@ export default function YourDate() {
     }
   }
 
-  // Getting the colors!
+  // Getting the colors! -------------------------------------------------
 
   const runColor = () => {
     const numClean = numString.trim();
