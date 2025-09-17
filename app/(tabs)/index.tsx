@@ -304,8 +304,6 @@ export default function YourDate() {
             ></TextInput>
         </View>
 
-        <Text style={{color: "red",}}>False</Text>
-
       </SafeAreaView>
 
       {/* Submit Button */}
