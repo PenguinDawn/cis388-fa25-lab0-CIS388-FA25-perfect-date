@@ -16,6 +16,11 @@ export default function YourDate() {
 
   // sets our input
   const [numString, setNumString] = useState("");
+  const [dayStr, setDayStr] = useState("");
+  const [monthStr, setMonthStr] = useState("");
+  const [yearStr, setYearStr] = useState("");
+
+  // sets our colors (DDMMYY)
   const [colored, setColor] = useState("#ffffff");
   const [colored2, setColor2] = useState("#ffffff");
   const [coloredH, setColorH] = useState("");
@@ -33,7 +38,6 @@ export default function YourDate() {
 
   //Submitted
   const isSubmitted = () => {
-
     if(valid) {
       setPrime(isPrime());
       setPali(isPalindrome());
@@ -235,8 +239,6 @@ export default function YourDate() {
         </View>
       </SafeAreaView>
 
-
-      {/* Input the Date */}
       {/* Submit Button */}
       <Button title="Submit" onPress={isSubmitted}></Button>
 
