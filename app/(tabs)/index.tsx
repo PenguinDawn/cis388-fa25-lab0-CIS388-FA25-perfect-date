@@ -41,7 +41,9 @@ export default function YourDate() {
     setDayStr(dayStr.trim());
     setMonthStr(monthStr.trim());
     setYearStr(yearStr.trim());
-
+    setNumString("");
+    setValid(true);
+    setNext("");
 
     if(parseInt(dayStr) < 32 && parseInt(dayStr) > 0 && Number.isInteger(parseInt(dayStr))){
       if(parseInt(dayStr) < 10) {
@@ -53,6 +55,7 @@ export default function YourDate() {
     }
     else {
       setValid(false);
+      setNext("your day ")
     }
 
     if(parseInt(monthStr) < 13 && parseInt(monthStr) > 0 && Number.isInteger(parseInt(monthStr))){
@@ -65,6 +68,7 @@ export default function YourDate() {
     }
     else {
       setValid(false);
+      setNext(next + "your month ")
     }
 
     if(parseInt(yearStr) < 2501 && parseInt(yearStr) > 0 && Number.isInteger(parseInt(yearStr))){
@@ -77,9 +81,12 @@ export default function YourDate() {
     }
     else {
       setValid(false);
+      setNext(next + "your year ")
     }
 
     if(valid) {
+      setNext("This date is special because it is...");
+      setNumString(dayStr + monthStr + yearStr)
       setPrime(isPrime());
       setPali(isPalindrome());
       setArm(isArmstrong());
@@ -87,10 +94,9 @@ export default function YourDate() {
       setPyth(isPyth());
       setPerPow(isPerPower());
       runColor();
-      setNext("This date is special because it is...");
     }
     else {
-      setNext("Your input is not valid!")
+      setNext("is not valid!")
     }
   }
 
