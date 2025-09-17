@@ -39,11 +39,16 @@ export default function YourDate() {
     if (numClean === "") {
       return false;
     }
-    // reversing the string
-    const reverse = numClean.split('').reverse().join("");
-    // returning a booleon
-    return reverse === numString;
-  }
+
+    let nume = parseInt(numClean)
+  
+    for (let i = 2; i <= Math.sqrt(nume); i++) {
+      if (nume % i === 0) {
+        return false; // Found a divisor, not prime
+      }
+    }
+    return true; // No divisors found, it's prime
+  };
 
   // Palindrome
   const isPalindrome = () => {
