@@ -95,7 +95,7 @@ export default function YourDate() {
         setYearStr(yearStr);
       }
     } else {
-      setNext("your year is not valid")
+      setNext(`your year is not valid ${yearStr}`)
       return false;
     }
 
