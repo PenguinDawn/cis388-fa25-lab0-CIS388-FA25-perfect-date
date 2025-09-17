@@ -46,7 +46,7 @@ export default function YourDate() {
     setNext("");
 
     if(parseInt(dayStr) < 32 && parseInt(dayStr) > 0 && Number.isInteger(parseInt(dayStr)) && dayStr !== ""){
-      if(parseInt(dayStr) < 10) {
+      if(parseInt(dayStr) < 10 && dayStr[0] !== "0") {
         setDayStr("0" + dayStr);
       }
       else {
