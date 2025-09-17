@@ -10,12 +10,12 @@ import { Button, SafeAreaView, Text, TextInput, View } from "react-native";
 export default function YourDate() {
 
   // constants we're using in the app
-  const [valid, setValid] = useState(true);
-  const [next, setNext] = useState("");
+  const [valid, setValid] = useState(true); // validating input
+  const [next, setNext] = useState(""); // the error code
 
 
   // sets our input
-  const [numString, setNumString] = useState("");
+  const [numString, setNumString] = useState(""); // our final string
   const [dayStr, setDayStr] = useState("");
   const [monthStr, setMonthStr] = useState("");
   const [yearStr, setYearStr] = useState("");
@@ -34,55 +34,20 @@ export default function YourDate() {
   const [sumStr, setSumStr] = useState("");
   const [pyth, setPyth] = useState(false);
   const [perPow, setPerPow] = useState(false);
+
+
+
   
 
   //Submitted
   const isSubmitted = () => {
+    // resetting our previous things
     setDayStr(dayStr.trim());
     setMonthStr(monthStr.trim());
     setYearStr(yearStr.trim());
     setNumString("");
-    setValid(true);
-    setNext("");
+    setValid(isThisGood());
 
-    if(parseInt(dayStr) < 32 && parseInt(dayStr) > 0 && Number.isInteger(parseInt(dayStr)) && dayStr !== ""){
-      if(parseInt(dayStr) < 10 && dayStr[0] !== "0") {
-        setDayStr("0" + dayStr);
-      }
-      else {
-        setDayStr(dayStr);
-      }
-    }
-    else {
-      setValid(false);
-      setNext("your day ")
-    }
-
-    if(parseInt(monthStr) < 13 && parseInt(monthStr) > 0 && Number.isInteger(parseInt(monthStr)) && monthStr !== ""){
-      if(parseInt(monthStr) < 10 && monthStr[0] !== "0") {
-        setMonthStr("0" + monthStr);
-      }
-      else {
-        setMonthStr(monthStr);
-      }
-    }
-    else {
-      setValid(false);
-      setNext(next + "your month ")
-    }
-
-    if(parseInt(yearStr) < 2501 && parseInt(yearStr) > 0 && Number.isInteger(parseInt(yearStr) && yearStr !== "")){
-      if(parseInt(yearStr) < 10 && yearStr[0] !== "0") {
-        setYearStr("0" + yearStr);
-      }
-      else {
-        setYearStr(yearStr);
-      }
-    }
-    else {
-      setValid(false);
-      setNext(next + "your year ")
-    }
 
     if(valid) {
       setNext("This date is special because it is...");
@@ -95,9 +60,46 @@ export default function YourDate() {
       setPerPow(isPerPower());
       runColor();
     }
-    else {
-      setNext(next + "is not valid!")
+  }
+
+  // Valid Input --------------------------------------------------
+
+  const isThisGood = () => {
+
+    if(parseInt(dayStr) < 32 && parseInt(dayStr) > 0 && Number.isInteger(parseInt(dayStr)) && dayStr !== ""){
+      if(parseInt(dayStr) < 10 && dayStr[0] !== "0") {
+        setDayStr("0" + dayStr);
+      } else {
+        setDayStr(dayStr);
+      }
+    } else {
+      setNext("your day is not valid")
+      return false;
     }
+
+    if(parseInt(monthStr) < 13 && parseInt(monthStr) > 0 && Number.isInteger(parseInt(monthStr)) && monthStr !== ""){
+      if(parseInt(monthStr) < 10 && monthStr[0] !== "0") {
+        setMonthStr("0" + monthStr);
+      } else {
+        setMonthStr(monthStr);
+      }
+    } else {
+      setNext("your month is not valid")
+      return false;
+    }
+
+    if(parseInt(yearStr) < 2501 && parseInt(yearStr) > 0 && Number.isInteger(parseInt(yearStr) && yearStr !== "")){
+      if(parseInt(yearStr) < 10 && yearStr[0] !== "0") {
+        setYearStr("0" + yearStr);
+      } else {
+        setYearStr(yearStr);
+      }
+    } else {
+      setNext("your year is not valid")
+      return false;
+    }
+
+    return true;
   }
 
   // -------------- Here are the conditions for our date --------------------
