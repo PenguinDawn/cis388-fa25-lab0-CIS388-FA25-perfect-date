@@ -1,6 +1,6 @@
 import { Collapsible } from "@/components/Collapsible";
 import { useState } from "react";
-import { Button, StyleSheet, Text, TextInput, View } from "react-native";
+import { Button, ScrollView, StyleSheet, Text, TextInput, View } from "react-native";
 
 
 // This is the screen we're returning
@@ -272,7 +272,7 @@ export default function YourDate() {
   // and here is our actual app ------------------------------------
 
   return (
-    <View>
+    <ScrollView>
       {/* Header of Our App */}
       <View style={[styles.headerSpacer, {backgroundColor: colored}]}></View>
       <View style={[styles.header, {backgroundColor: colored}]}>
@@ -368,24 +368,24 @@ export default function YourDate() {
       </View>
       {/* End of Conditionals Section */}
       {/* Start of Colors Section */}
-      <View className="color-section">
-        <Text className="comments">Here are your colors for your perfect date!</Text>
+      <View style={styles.coloredSection}>
+        <Text style={styles.comments}>Here are your colors for your perfect date!</Text>
         
         {/* input another view here if necessary */}
 
           {/* hex codes */}
-          <View className="hex-colors">
-            <Text className="comments">Hex Colors and Code</Text>
+          <Text style={styles.colorsTitle}>Hex Colors and Code</Text>
+          <View style={styles.colorsGroup}>
             {/* first hex code */}
-            <View className="hex-code-1">
-              <Text>Day, Month, Year Hex Code (#DDMMYY)</Text>
+            <View style={styles.colorsPalette}>
+              <Text>#DDMMYY</Text>
               <View style={{backgroundColor: colored, width: 50, height: 50}}></View>
               <Text>{colored}</Text>
             </View>
             {/* end of hex code 1 */}
             {/* second hex code */}
-            <View className="hex-code-2">
-              <Text>Month, Day Year Hex Code (#MMDDYY)</Text>
+            <View style={styles.colorsPalette}>
+              <Text>#MMDDYY</Text>
               <View style={{backgroundColor: colored2, width: 50, height: 50}}></View>
               <Text>{colored2}</Text>
             </View>
@@ -393,18 +393,18 @@ export default function YourDate() {
           </View>
           {/* end of hex codes */}
           {/* hsl codes */}
-          <View className="hsl-colors">
-            <Text className="comments">HSL Colors and Code</Text>
+          <Text style={styles.colorsTitle}>HSL Colors and Code</Text>
+          <View style={styles.colorsGroup}>
             {/* first hsl code */}
-            <View className="hsl-code-1">
-              <Text>Day, Month, Year HSL Code hsl(DD, MM%, YY%)</Text>
+            <View style={styles.colorsPalette}>
+              <Text>hsl(DD, MM%, YY%)</Text>
               <View style={{backgroundColor: coloredH, width: 50, height: 50}}></View>
               <Text>{coloredH}</Text>
             </View>
             {/* end of hsl code 1 */}
             {/* second hsl code */}
-            <View className="hsl-code-2">
-              <Text>Month, Day Year hsl Code hsl(MM, DD%, YY%)</Text>
+            <View style={styles.colorsPalette}>
+              <Text>hsl(MM, DD%, YY%)</Text>
               <View style={{backgroundColor: coloredH2, width: 50, height: 50}}></View>
               <Text>{coloredH2}</Text>
             </View>
@@ -414,7 +414,7 @@ export default function YourDate() {
 
       </View>
       {/* end of color section */}
-  </View>
+  </ScrollView>
   // end of holder of app
   );}
 
@@ -484,13 +484,32 @@ export default function YourDate() {
       fontSize: 30,
     },
     conditionalDropDowns: {
-      flex: 1,
-      gap: 8,
       paddingLeft: 20,
       paddingRight: 20,
       paddingTop: 10,
       paddingBottom: 10,
+      height: 200,
+    },
+    coloredSection: {
+      paddingLeft: 20,
+      paddingRight: 20,
+      paddingTop: 10,
+      paddingBottom: 10,
+    },
+    colorsGroup: {
+      flex: 1,
+      flexDirection: "row",
+      justifyContent: 'space-evenly',
+    },
+    colorsTitle: {
+      fontSize: 17,
+      fontFamily: 'serif',
+    },
+    colorsPalette: {
+      flex: 1,
+      alignItems: 'center',
     }
+
 
 
 
