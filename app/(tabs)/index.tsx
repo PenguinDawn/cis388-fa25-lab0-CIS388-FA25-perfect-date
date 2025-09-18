@@ -2,16 +2,17 @@ import { Collapsible } from "@/components/Collapsible";
 import { ThemedText } from "@/components/ThemedText";
 import { ThemedView } from "@/components/ThemedView";
 import { useState } from "react";
-import { Button, SafeAreaView, Text, TextInput, View } from "react-native";
+import { Button, Text, TextInput, View } from "react-native";
 
 
-// This is the function we're returning
+// This is the screen we're returning
 
 export default function YourDate() {
 
   // constants we're using in the app
   const [valid, setValid] = useState(true); // validating input
   const [next, setNext] = useState(""); // the error code
+  let error = "";
 
 
   // sets our input
@@ -35,11 +36,7 @@ export default function YourDate() {
   const [pyth, setPyth] = useState(false);
   const [perPow, setPerPow] = useState(false);
 
-
-
-  
-
-  //Submitted
+  //Runs Our Code Submitted
   const isSubmitted = () => {
     // resetting our previous things
     setDayStr(dayStr.trim());
@@ -278,82 +275,101 @@ export default function YourDate() {
 
   return (
     <View>
-      <SafeAreaView> 
-        <View>
-          <Text>Day</Text>
-            <TextInput
-            style={{borderColor: "black", borderStyle: "solid", borderWidth: 2}}
+      {/* Header of Our App */}
+      <View className="header-spacing"></View>
+      <View className="header">
+        <Text className="app-title">Perfect Date</Text>
+      </View> 
+      {/* End Header */}
+      {/* Start Inputs */}
+      <View className="input-section">
+        <Text className="comments">Input Your Date Here</Text>
+        <Text className="error">{error}</Text>
+        <View className="date-holder">
+          {/* begin of day input */}
+          <View className="day-input">
+            <Text>Day</Text>
+            <TextInput className="input"
             value={dayStr}
             onChangeText={setDayStr}
             ></TextInput>
-        </View>
-        <View>
-          <Text>Month</Text>
-            <TextInput
-            style={{borderColor: "black", borderStyle: "solid", borderWidth: 2}}
+          </View>
+          {/* end of day input */}
+          {/* begin of month input */}
+          <View className="month-input">
+            <Text>Month</Text>
+            <TextInput className="input"
             value={monthStr}
             onChangeText={setMonthStr}
             ></TextInput>
-        </View>
-        <View>
-          <Text>Year</Text>
-            <TextInput
-            style={{borderColor: "black", borderStyle: "solid", borderWidth: 2}}
+          </View>
+          {/* end of month input */}
+          {/* begin of year input */}
+          <View className="year-input">
+            <Text>Year</Text>
+            <TextInput className="input"
             value={yearStr}
             onChangeText={setYearStr}
             ></TextInput>
-        </View>
+          </View>
+          {/* end of year input */}
+        </View> 
+        {/* end of date-holder */}
+        {/* Submit Button */}
+        <Button title="Submit" onPress={isSubmitted}></Button>
+      </View>
+      {/* end of input-section */}
+      {/* Start Conditional Dropdowns */}
+      <View className="conditional DropDowns">
+        {valid && ( <Text className="comments">Here is what is special about your date!</Text>)}
+        {/* Prime */}
+        {primed && (
+          <Collapsible title="Prime">
+            <ThemedText>This Number is only divisible by itself!</ThemedText>
+            <ThemedText>Ex. 3, 13, 53</ThemedText>
+          </Collapsible>
+        )}
+        {/* Palindrome */}
+        {pali && (
+          <Collapsible title="Palindrome">
+            <ThemedText>This number is the same backwards and forwards!</ThemedText>
+            <ThemedText>Ex. 022220 is the same!</ThemedText>
+          </Collapsible>
+        )}
+        {/* Pythagorean*/}
+        {pyth && (
+          <Collapsible title="Pythagorean">
+            <ThemedText>This number is the day squared times itself and the month times itself equals the year </ThemedText>
+            <ThemedText>July 24th, 2025 \(7 24 25) is 7^2 + 24^2 = 25^2 (^2 is squared)</ThemedText>
+          </Collapsible>
+        )}
+        {/* Perfect Power */}
+        {perPow && (
+          <Collapsible title="Perfect Power">
+            <ThemedText>This date as a number is a perfect square or cube!</ThemedText>
+            <ThemedText>Ex. 9/27/2025 is 9272025 = 3045^2</ThemedText>
+          </Collapsible>
+        )}
+        {/* Armstrong */}
+        {arm && (
+          <Collapsible title="Narcissistic / Armstrong ">
+            <ThemedText>a number that is equal to the sum of its own digits, each raised to the power of the number of digits</ThemedText>
+            <ThemedText>Ex. 371 = 3^3 + 7^3 + 1^3 </ThemedText>
+          </Collapsible>
+        )}
+        {/* Equation */}
+        {equa && (
+          <Collapsible title="Equation of Day Month = Year">
+            <ThemedText>This day {sumStr} month equals the year! </ThemedText>
+            <ThemedText>Ex. 7 + 7 = (20)14 (day plus month = year) </ThemedText>
+          </Collapsible>
+        )}
+        {/* end of conditionals */}
+      </View>
+      {/* End of Conditionals Settings */}
 
-      </SafeAreaView>
 
-      {/* Submit Button */}
-      <Button title="Submit" onPress={isSubmitted}></Button>
-
-      {/* Conditionals */}
-
-      <Text>{next}</Text>
-      {/* Prime */}
-      {primed && (
-        <Collapsible title="Prime">
-          <ThemedText>This Number is only divisible by itself!</ThemedText>
-          <ThemedText>Ex. 3, 13, 53</ThemedText>
-        </Collapsible>
-      )}
-      {/* Palindrome */}
-      {pali && (
-        <Collapsible title="Palindrome">
-          <ThemedText>This number is the same backwards and forwards!</ThemedText>
-          <ThemedText>Ex. 022220 is the same!</ThemedText>
-        </Collapsible>
-      )}
-      {/* Pythagorean*/}
-      {pyth && (
-        <Collapsible title="Pythagorean">
-          <ThemedText>This number is the day squared times itself and the month times itself equals the year </ThemedText>
-          <ThemedText>July 24th, 2025 \(7 24 25) is 7^2 + 24^2 = 25^2 (^2 is squared)</ThemedText>
-        </Collapsible>
-      )}
-      {/* Perfect Power */}
-      {perPow && (
-        <Collapsible title="Perfect Power">
-          <ThemedText>This date as a number is a perfect square or cube!</ThemedText>
-          <ThemedText>Ex. 9/27/2025 is 9272025 = 3045^2</ThemedText>
-        </Collapsible>
-      )}
-      {/* Armstrong */}
-      {arm && (
-        <Collapsible title="Narcissistic / Armstrong ">
-          <ThemedText>a number that is equal to the sum of its own digits, each raised to the power of the number of digits</ThemedText>
-          <ThemedText>Ex. 371 = 3^3 + 7^3 + 1^3 </ThemedText>
-        </Collapsible>
-      )}
-      {/* Equation */}
-      {equa && (
-        <Collapsible title="Equation of Day Month = Year">
-          <ThemedText>This day {sumStr} month equals the year! </ThemedText>
-          <ThemedText>Ex. 7 + 7 = (20)14 (day plus month = year) </ThemedText>
-        </Collapsible>
-      )}
+      
 
       <View style={{ width: 50, height: 50}}></View>
 
