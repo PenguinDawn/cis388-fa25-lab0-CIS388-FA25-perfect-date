@@ -1,5 +1,4 @@
 import { Collapsible } from "@/components/Collapsible";
-import { ThemedText } from "@/components/ThemedText";
 import { useState } from "react";
 import { Button, StyleSheet, Text, TextInput, View } from "react-native";
 
@@ -285,16 +284,6 @@ export default function YourDate() {
         <Text style={styles.comments}>Input Your Date Here</Text>
         <Text style={styles.error}>{error}</Text>
         <View style={styles.dateHolder}>
-          {/* begin of day input */}
-          <View style={styles.dated}>
-            <Text>Day</Text>
-            <TextInput style={styles.input}
-            value={dayStr}
-            onChangeText={setDayStr}
-            ></TextInput>
-          </View>
-          {/* end of day input */}
-          <Text style={styles.giantSlash}>/</Text>
           {/* begin of month input */}
           <View style={styles.dated}>
             <Text>Month</Text>
@@ -304,6 +293,16 @@ export default function YourDate() {
             ></TextInput>
           </View>
           {/* end of month input */}
+          <Text style={styles.giantSlash}>/</Text>
+          {/* begin of day input */}
+          <View style={styles.dated}>
+            <Text>Day</Text>
+            <TextInput style={styles.input}
+            value={dayStr}
+            onChangeText={setDayStr}
+            ></TextInput>
+          </View>
+          {/* end of day input */}
           <Text style={styles.giantSlash}>/</Text>
           {/* begin of year input */}
           <View style={styles.dated}>
@@ -321,48 +320,48 @@ export default function YourDate() {
       </View>
       {/* end of input-section */}
       {/* Start Conditional Dropdowns */}
-      <View className="conditional DropDowns">
-        {valid && ( <Text className="comments">Here is what is special about your date!</Text>)}
+      <View style={[styles.conditionalDropDowns, {backgroundColor: coloredH}]}>
+        {valid && ( <Text style={styles.comments}>Here is what is special about your date!</Text>)}
         {/* Prime */}
         {primed && (
           <Collapsible title="Prime">
-            <ThemedText>This Number is only divisible by itself!</ThemedText>
-            <ThemedText>Ex. 3, 13, 53</ThemedText>
+            <Text>This Number is only divisible by itself!</Text>
+            <Text>Ex. 3, 13, 53</Text>
           </Collapsible>
         )}
         {/* Palindrome */}
         {pali && (
           <Collapsible title="Palindrome">
-            <ThemedText>This number is the same backwards and forwards!</ThemedText>
-            <ThemedText>Ex. 022220 is the same!</ThemedText>
+            <Text>This number is the same backwards and forwards!</Text>
+            <Text>Ex. 022220 is the same!</Text>
           </Collapsible>
         )}
         {/* Pythagorean*/}
         {pyth && (
           <Collapsible title="Pythagorean">
-            <ThemedText>This number is the day squared times itself and the month times itself equals the year </ThemedText>
-            <ThemedText>July 24th, 2025 \(7 24 25) is 7^2 + 24^2 = 25^2 (^2 is squared)</ThemedText>
+            <Text>This number is the day squared times itself and the month times itself equals the year </Text>
+            <Text>July 24th, 2025 \(7 24 25) is 7^2 + 24^2 = 25^2 (^2 is squared)</Text>
           </Collapsible>
         )}
         {/* Perfect Power */}
         {perPow && (
           <Collapsible title="Perfect Power">
-            <ThemedText>This date as a number is a perfect square or cube!</ThemedText>
-            <ThemedText>Ex. 9/27/2025 is 9272025 = 3045^2</ThemedText>
+            <Text>This date as a number is a perfect square or cube!</Text>
+            <Text>Ex. 9/27/2025 is 9272025 = 3045^2</Text>
           </Collapsible>
         )}
         {/* Armstrong */}
         {arm && (
           <Collapsible title="Narcissistic / Armstrong ">
-            <ThemedText>a number that is equal to the sum of its own digits, each raised to the power of the number of digits</ThemedText>
-            <ThemedText>Ex. 371 = 3^3 + 7^3 + 1^3 </ThemedText>
+            <Text>a number that is equal to the sum of its own digits, each raised to the power of the number of digits</Text>
+            <Text>Ex. 371 = 3^3 + 7^3 + 1^3 </Text>
           </Collapsible>
         )}
         {/* Equation */}
         {equa && (
           <Collapsible title="Equation of Day Month = Year">
-            <ThemedText>This day {sumStr} month equals the year! </ThemedText>
-            <ThemedText>Ex. 7 + 7 = (20)14 (day plus month = year) </ThemedText>
+            <Text>This day {sumStr} month equals the year! </Text>
+            <Text>Ex. 7 + 7 = (20)14 (day plus month = year) </Text>
           </Collapsible>
         )}
         {/* end of conditionals */}
@@ -429,24 +428,31 @@ export default function YourDate() {
       flexDirection: 'row',
       alignItems: 'center',
       gap: 8,
-      paddingBottom: 5,
+      paddingBottom: 20,
       paddingLeft: 20,
     },
     appTitle: {
       fontSize: 30,
       fontWeight: "bold",
       fontFamily: "New Times Romans, serif",
+      backgroundColor: "white",
+      padding: 5,
+      borderRadius: 5,
     },
     inputSection: {
       paddingLeft: 20,
       paddingRight: 20,
       paddingTop: 10,
+      paddingBottom: 10,
       backgroundColor: "#eae8e8ff",
     },
     comments: {
       fontSize: 21,
       fontFamily: "serif",
       fontWeight: "bold",
+      backgroundColor: "white",
+      padding: 5,
+      borderRadius: 5,
     },
     error: {
       color: "red",
@@ -477,6 +483,14 @@ export default function YourDate() {
     giantSlash: {
       fontSize: 30,
     },
+    conditionalDropDowns: {
+      flex: 1,
+      gap: 8,
+      paddingLeft: 20,
+      paddingRight: 20,
+      paddingTop: 10,
+      paddingBottom: 10,
+    }
 
 
 
