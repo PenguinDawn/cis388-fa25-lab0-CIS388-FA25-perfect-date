@@ -453,6 +453,7 @@ export default function YourDate() {
       backgroundColor: "white",
       padding: 5,
       borderRadius: 5,
+      marginBottom: 5,
     },
     error: {
       color: "red",
@@ -504,6 +505,8 @@ export default function YourDate() {
     colorsTitle: {
       fontSize: 17,
       fontFamily: 'serif',
+      marginBottom: 5,
+      marginTop: 10,
     },
     colorsPalette: {
       flex: 1,
