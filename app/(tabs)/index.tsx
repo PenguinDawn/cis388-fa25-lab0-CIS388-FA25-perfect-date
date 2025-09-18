@@ -283,30 +283,32 @@ export default function YourDate() {
       {/* Start Inputs */}
       <View style={styles.inputSection}>
         <Text style={styles.comments}>Input Your Date Here</Text>
-        <Text className="error">{error}</Text>
-        <View className="date-holder">
+        <Text style={styles.error}>{error}</Text>
+        <View style={styles.dateHolder}>
           {/* begin of day input */}
-          <View className="day-input">
+          <View style={styles.dated}>
             <Text>Day</Text>
-            <TextInput className="input"
+            <TextInput style={styles.input}
             value={dayStr}
             onChangeText={setDayStr}
             ></TextInput>
           </View>
           {/* end of day input */}
+          <Text style={styles.giantSlash}>/</Text>
           {/* begin of month input */}
-          <View className="month-input">
+          <View style={styles.dated}>
             <Text>Month</Text>
-            <TextInput className="input"
+            <TextInput style={styles.input}
             value={monthStr}
             onChangeText={setMonthStr}
             ></TextInput>
           </View>
           {/* end of month input */}
+          <Text style={styles.giantSlash}>/</Text>
           {/* begin of year input */}
-          <View className="year-input">
+          <View style={styles.dated}>
             <Text>Year</Text>
-            <TextInput className="input"
+            <TextInput style={styles.input}
             value={yearStr}
             onChangeText={setYearStr}
             ></TextInput>
@@ -437,6 +439,7 @@ export default function YourDate() {
     },
     inputSection: {
       paddingLeft: 20,
+      paddingRight: 20,
       paddingTop: 10,
       backgroundColor: "#eae8e8ff",
     },
@@ -448,20 +451,37 @@ export default function YourDate() {
     error: {
       color: "red",
     },
-
-
-
-    stepContainer: {
-      gap: 8,
-      marginBottom: 8,
+    dateHolder: {
+      marginTop: 5,
+      borderColor: "black",
+      borderStyle: "solid",
+      borderWidth: 2,
+      borderRadius: 30,
+      flex: 1,
+      flexDirection: "row",
+      paddingInline: 5,
+      alignItems: "center",
+      justifyContent: "center",
+      marginBottom: 10,
     },
-    reactLogo: {
-      height: 178,
-      width: 290,
-      bottom: 0,
-      left: 0,
-      position: 'absolute',
+    dated: {
+      width: "30%",
+      padding: 5,
     },
+    input: {
+      borderColor: "gray",
+      borderStyle: "solid",
+      borderWidth: 1,
+      paddingInline: 10,
+    },
+    giantSlash: {
+      fontSize: 30,
+    },
+
+
+
+
+
   });
   
 
