@@ -275,14 +275,14 @@ export default function YourDate() {
   return (
     <View>
       {/* Header of Our App */}
-      <View className="header-spacing"></View>
-      <View className="header">
-        <Text className="app-title">Perfect Date</Text>
+      <View style={[styles.headerSpacer, {backgroundColor: colored}]}></View>
+      <View style={[styles.header, {backgroundColor: colored}]}>
+        <Text style={styles.appTitle}>Perfect Date</Text>
       </View> 
       {/* End Header */}
       {/* Start Inputs */}
-      <View className="input-section">
-        <Text className="comments">Input Your Date Here</Text>
+      <View style={styles.inputSection}>
+        <Text style={styles.comments}>Input Your Date Here</Text>
         <Text className="error">{error}</Text>
         <View className="date-holder">
           {/* begin of day input */}
@@ -418,11 +418,39 @@ export default function YourDate() {
   );}
 
   const styles = StyleSheet.create({
-    titleContainer: {
+    headerSpacer: {
+      width: "100%",
+      height: 30,
+    },
+    header: {
+      flex: 1,
       flexDirection: 'row',
       alignItems: 'center',
       gap: 8,
+      paddingBottom: 5,
+      paddingLeft: 20,
     },
+    appTitle: {
+      fontSize: 30,
+      fontWeight: "bold",
+      fontFamily: "New Times Romans, serif",
+    },
+    inputSection: {
+      paddingLeft: 20,
+      paddingTop: 10,
+      backgroundColor: "#eae8e8ff",
+    },
+    comments: {
+      fontSize: 21,
+      fontFamily: "serif",
+      fontWeight: "bold",
+    },
+    error: {
+      color: "red",
+    },
+
+
+
     stepContainer: {
       gap: 8,
       marginBottom: 8,
