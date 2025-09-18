@@ -9,15 +9,14 @@ export default function YourDate() {
 
   // constants we're using in the app
   const [valid, setValid] = useState(true); // validating input
-  const [next, setNext] = useState(""); // the error code
-  let error = "";
+  const [error, setError] = useState(""); // the error code
 
 
   // sets our input
   const [numString, setNumString] = useState(""); // our final string
-  const [dayStr, setDayStr] = useState("");
-  const [monthStr, setMonthStr] = useState("");
-  const [yearStr, setYearStr] = useState("");
+  const [dayStr, setDayStr] = useState(""); // for the day
+  const [monthStr, setMonthStr] = useState(""); // for the month
+  const [yearStr, setYearStr] = useState(""); // for the year
 
   // sets our colors (DDMMYY)
   const [colored, setColor] = useState("#ffffff");
@@ -43,10 +42,7 @@ export default function YourDate() {
     setNumString("");
     setValid(isThisGood());
 
-
-
     if(valid) {
-      setNext("This date is special because it is...");
       setNumString(dayStr + monthStr + yearStr)
       setPrime(isPrime());
       setPali(isPalindrome());
@@ -69,7 +65,7 @@ export default function YourDate() {
         setDayStr(dayStr);
       }
     } else {
-      setNext("your day is not valid")
+      setError("your day is not valid")
       return false;
     }
 
@@ -80,7 +76,7 @@ export default function YourDate() {
         setMonthStr(monthStr);
       }
     } else {
-      setNext("your month is not valid")
+      setError("your month is not valid")
       return false;
     }
 
@@ -92,7 +88,7 @@ export default function YourDate() {
         setYearStr(yearStr);
       }
     } else {
-      setNext("your year is not valid")
+      setError("your year is not valid")
       return false;
     }
 
@@ -266,7 +262,7 @@ export default function YourDate() {
     setColor("#" + day + month + year)
     setColor2("#" + month + day + year)
     setColorH("hsl(" + day + ","+ month + "%,"+ year + "%)")
-    setColorH2("hsl(" + day + ","+ month + "%,"+ year + "%)")
+    setColorH2("hsl(" + month + ","+ day + "%,"+ year + "%)")
   }
 
   // and here is our actual app ------------------------------------
