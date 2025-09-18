@@ -1,8 +1,7 @@
 import { Collapsible } from "@/components/Collapsible";
 import { ThemedText } from "@/components/ThemedText";
-import { ThemedView } from "@/components/ThemedView";
 import { useState } from "react";
-import { Button, Text, TextInput, View } from "react-native";
+import { Button, StyleSheet, Text, TextInput, View } from "react-native";
 
 
 // This is the screen we're returning
@@ -366,45 +365,75 @@ export default function YourDate() {
         )}
         {/* end of conditionals */}
       </View>
-      {/* End of Conditionals Settings */}
-
-
-      
-
-      <View style={{ width: 50, height: 50}}></View>
-
-
-      {/* Hex code */}
-      <ThemedView>
-        <ThemedText>Here are your colors for the date!</ThemedText>
-        <View>
-          <ThemedText>Hex Colors!</ThemedText>
-          <View>
-            <ThemedText>Day, Month, Year Hex Code</ThemedText>
-            <View style={{backgroundColor: colored, width: 50, height: 50}}></View>
-          </View>
-          <View>
-            <ThemedText>Month, Day, Year Hex Code</ThemedText>
-            <View style={{backgroundColor: colored2, width: 50, height: 50}}></View>
-          </View>
-        </View>
-
-        <View>
-          <ThemedText>HSL Colors!</ThemedText>
-          <View>
-            <ThemedText>Day, Month, Year HSL Code</ThemedText>
-            <View style={{backgroundColor: coloredH, width: 50, height: 50}}></View>
-          </View>
-          <View>
-            <ThemedText>Month, Day, Year HSL Code</ThemedText>
-            <View style={{backgroundColor: coloredH2, width: 50, height: 50}}></View>
-          </View>
-        </View>
+      {/* End of Conditionals Section */}
+      {/* Start of Colors Section */}
+      <View className="color-section">
+        <Text className="comments">Here are your colors for your perfect date!</Text>
         
+        {/* input another view here if necessary */}
 
-      </ThemedView>
-      
+          {/* hex codes */}
+          <View className="hex-colors">
+            <Text className="comments">Hex Colors and Code</Text>
+            {/* first hex code */}
+            <View className="hex-code-1">
+              <Text>Day, Month, Year Hex Code (#DDMMYY)</Text>
+              <View style={{backgroundColor: colored, width: 50, height: 50}}></View>
+              <Text>{colored}</Text>
+            </View>
+            {/* end of hex code 1 */}
+            {/* second hex code */}
+            <View className="hex-code-2">
+              <Text>Month, Day Year Hex Code (#MMDDYY)</Text>
+              <View style={{backgroundColor: colored2, width: 50, height: 50}}></View>
+              <Text>{colored2}</Text>
+            </View>
+            {/* end of hex code 2 */}
+          </View>
+          {/* end of hex codes */}
+          {/* hsl codes */}
+          <View className="hsl-colors">
+            <Text className="comments">HSL Colors and Code</Text>
+            {/* first hsl code */}
+            <View className="hsl-code-1">
+              <Text>Day, Month, Year HSL Code hsl(DD, MM%, YY%)</Text>
+              <View style={{backgroundColor: coloredH, width: 50, height: 50}}></View>
+              <Text>{coloredH}</Text>
+            </View>
+            {/* end of hsl code 1 */}
+            {/* second hsl code */}
+            <View className="hsl-code-2">
+              <Text>Month, Day Year hsl Code hsl(MM, DD%, YY%)</Text>
+              <View style={{backgroundColor: coloredH2, width: 50, height: 50}}></View>
+              <Text>{coloredH2}</Text>
+            </View>
+            {/* end of hsl code 2 */}
+          </View>
+          {/* end of hsl codes */}
+
       </View>
-  );
-}
+      {/* end of color section */}
+  </View>
+  // end of holder of app
+  );}
+
+  const styles = StyleSheet.create({
+    titleContainer: {
+      flexDirection: 'row',
+      alignItems: 'center',
+      gap: 8,
+    },
+    stepContainer: {
+      gap: 8,
+      marginBottom: 8,
+    },
+    reactLogo: {
+      height: 178,
+      width: 290,
+      bottom: 0,
+      left: 0,
+      position: 'absolute',
+    },
+  });
+  
 
