@@ -36,9 +36,6 @@ export default function YourDate() {
   //Runs Our Code Submitted
   const isSubmitted = () => {
     // resetting our previous things
-    setDayStr(dayStr.trim());
-    setMonthStr(monthStr.trim());
-    setYearStr(yearStr.trim());
     setNumString("");
     setValid(isThisGood());
 
@@ -56,7 +53,11 @@ export default function YourDate() {
 
   // Valid Input --------------------------------------------------
 
+
   const isThisGood = () => {
+    setDayStr(dayStr.trim());
+    setMonthStr(monthStr.trim());
+    setYearStr(yearStr.trim());
 
     if(parseInt(dayStr) < 32 && parseInt(dayStr) > 0 && Number.isInteger(parseInt(dayStr)) && dayStr !== ""){
       if(parseInt(dayStr) < 10 && dayStr[0] !== "0") {
@@ -91,8 +92,8 @@ export default function YourDate() {
       setError("your year is not valid")
       return false;
     }
-
     return true;
+
   }
 
   // -------------- Here are the conditions for our date --------------------
@@ -414,6 +415,7 @@ export default function YourDate() {
   // end of holder of app
   );}
 
+  // our stylesheet
   const styles = StyleSheet.create({
     headerSpacer: {
       width: "100%",
@@ -507,13 +509,7 @@ export default function YourDate() {
     colorsPalette: {
       flex: 1,
       alignItems: 'center',
-    }
-
-
-
-
-
-
-  });
+    },
+});
   
 
