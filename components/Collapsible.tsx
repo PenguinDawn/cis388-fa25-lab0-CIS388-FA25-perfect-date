@@ -8,7 +8,7 @@ export function Collapsible({ children, title }: PropsWithChildren & { title: st
   const [isOpen, setIsOpen] = useState(false);
 
   return (
-    <View>
+    <View style={{backgroundColor: "white"}}>
       <TouchableOpacity
         style={styles.heading}
         onPress={() => setIsOpen((value) => !value)}
