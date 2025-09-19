@@ -1,6 +1,6 @@
 import { Collapsible } from "@/components/Collapsible";
 import { useState } from "react";
-import { Button, ScrollView, StyleSheet, Text, TextInput, View } from "react-native";
+import { Pressable, ScrollView, StyleSheet, Text, TextInput, View } from "react-native";
 
 
 // This is the screen we're returning
@@ -258,7 +258,7 @@ export default function YourDate() {
         </View> 
         {/* end of date-holder */}
         {/* Submit Button */}
-        <Button title="Submit" onPress={isSubmitted}></Button>
+        <Pressable style={styles.button} onPress={isSubmitted}>Submit</Pressable>
       </View>
       {/* end of input-section */}
       {/* Start Conditional Dropdowns */}
@@ -455,6 +455,20 @@ export default function YourDate() {
       flex: 1,
       alignItems: 'center',
     },
+    button: {
+      flex: 1,
+      alignItems: "center",
+      justifyContent: "center",
+      backgroundColor: "#c1f3b4ff",
+      borderColor: "#4f4e4eff",
+      borderStyle: "solid",
+      borderWidth: 3,
+      paddingInline: 10,
+      borderRadius: 5,
+      fontWeight: "semibold",
+      fontFamily: "sans-serif",
+    },
+    
 });
   
 
