@@ -35,12 +35,11 @@ export default function YourDate() {
 
   //Runs Our Code Submitted
   const isSubmitted = () => {
-    setError(dayStr)
     setValid(false);
     isThisGood()
 
     if(valid) {
-      setNumString(dayStr + monthStr + yearStr)
+      setNumString(monthStr + dayStr + yearStr)
       setPrime(isPrime());
       setPali(isPalindrome());
       setArm(isArmstrong());
@@ -117,13 +116,12 @@ export default function YourDate() {
   // Palindrome -------------------------
   const isPalindrome = () => {
     //remove leading spaces
-    const numClean = numString;
+    const numClean = [...numString].toString();
     
  
     // reversing the string
     const reverse = numClean.split('').reverse().join("");
     // returning a booleon
-    setError(reverse)
     return reverse === numString;
 
     
@@ -143,7 +141,7 @@ export default function YourDate() {
   // Perfect Power --------------------------------------
   const isPerPower = () => {
     //remove leading spaces
-    const numClean = numString;
+    const numClean = [...numString].toString();
     // return empty
 
     let num = parseInt(numClean);
@@ -164,9 +162,9 @@ export default function YourDate() {
   // Armstrong -----------------------------------------------------
 
   const isArmstrong = () => {
-    let numClean = numString;
-    if(numString[0] === "0") {
-      numClean = numString.slice(1, );
+    let numClean = [...numString].toString();
+    if(numClean[0] === "0") {
+      numClean = numClean.slice(1, );
     }
     // Squaring it
     let lastNum = 0;
@@ -241,7 +239,7 @@ export default function YourDate() {
             <Text>Month</Text>
             <TextInput style={styles.input}
             value={monthStr}
-            onChangeText={setMonthStr}
+            onChangeText={(text) => setMonthStr(text)}
             ></TextInput>
           </View>
           {/* end of month input */}
@@ -251,7 +249,7 @@ export default function YourDate() {
             <Text>Day</Text>
             <TextInput style={styles.input}
             value={dayStr}
-            onChangeText={setDayStr}
+            onChangeText={(text) => setDayStr(text)}
             ></TextInput>
           </View>
           {/* end of day input */}
@@ -261,7 +259,7 @@ export default function YourDate() {
             <Text>Year</Text>
             <TextInput style={styles.input}
             value={yearStr}
-            onChangeText={setYearStr}
+            onChangeText={(text) => setYearStr(text)}
             ></TextInput>
           </View>
           {/* end of year input */}
