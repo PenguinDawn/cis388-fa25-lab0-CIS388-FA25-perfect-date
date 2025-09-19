@@ -79,7 +79,6 @@ export default function YourDate() {
     setValid(true);
     setNumString(monthStr + dayStr + yearStr)
     
-    setError(dayStr);
 
     if(valid) {
       setPrime(isPrime());
@@ -101,9 +100,9 @@ export default function YourDate() {
   // Prime -----------------------------------------
   const isPrime = () => {
     let nume = parseInt(numString);
-    for (let i = 2; i < nume; i++) {
-      if (nume % i !== 0) {
-        return false; // Found a divisor, not prime
+    for (let i = 2; i < Math.sqrt(nume); i++) {
+      if (Number.isInteger(nume / i) === true) {
+        return false;
       }
     }
     return true; // No divisors found, it's prime
@@ -118,8 +117,6 @@ export default function YourDate() {
     const reverse = numClean.split('').reverse().join("");
     // returning a booleon
     return reverse === numClean;
-
-    
   }
 
   // Pythagorean day^2 + month^2 = year^2 ----------------------
@@ -127,7 +124,6 @@ export default function YourDate() {
     let day = parseInt(dayStr);
     let month = parseInt(monthStr);
     let year = parseInt(yearStr.slice(-2, ));
-    
     
     let quared = (day * day) + (month * month);
     return quared === year * year;
