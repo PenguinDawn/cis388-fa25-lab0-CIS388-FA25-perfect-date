@@ -36,7 +36,6 @@ export default function YourDate() {
   //Runs Our Code Submitted
   const isSubmitted = () => {
     setValid(false);
-    setError("");
 
     setDayStr(dayStr.trim());
     setMonthStr(monthStr.trim());
@@ -78,10 +77,11 @@ export default function YourDate() {
       return false;
     }
     setValid(true);
+    setNumString(monthStr + dayStr + yearStr)
     
+    setError(dayStr);
 
     if(valid) {
-      setNumString(monthStr + dayStr + yearStr)
       setPrime(isPrime());
       setPali(isPalindrome());
       setArm(isArmstrong());
@@ -101,7 +101,6 @@ export default function YourDate() {
   // Prime -----------------------------------------
   const isPrime = () => {
     let nume = parseInt(numString);
-    setError(numString)
     for (let i = 2; i < nume; i++) {
       if (nume % i !== 0) {
         return false; // Found a divisor, not prime
