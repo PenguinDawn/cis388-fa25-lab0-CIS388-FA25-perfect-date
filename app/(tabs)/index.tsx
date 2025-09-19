@@ -35,8 +35,9 @@ export default function YourDate() {
 
   //Runs Our Code Submitted
   const isSubmitted = () => {
-    // resetting our previous things
-    setValid(isThisGood());
+    setError(dayStr)
+    setValid(false);
+    isThisGood()
 
     if(valid) {
       setNumString(dayStr + monthStr + yearStr)
@@ -66,6 +67,7 @@ export default function YourDate() {
       }
     } else {
       setError("your day is not valid")
+      setValid(false);
       return false;
     }
 
@@ -77,6 +79,7 @@ export default function YourDate() {
       }
     } else {
       setError("your month is not valid")
+      setValid(false);
       return false;
     }
 
@@ -88,10 +91,11 @@ export default function YourDate() {
       }
     } else {
       setError("your year is not valid")
+      setValid(false);
       return false;
     }
 
-    return true;
+    setValid(true);
 
   }
 
@@ -114,11 +118,15 @@ export default function YourDate() {
   const isPalindrome = () => {
     //remove leading spaces
     const numClean = numString;
+    
  
     // reversing the string
     const reverse = numClean.split('').reverse().join("");
     // returning a booleon
+    setError(reverse)
     return reverse === numString;
+
+    
   }
 
   // Pythagorean day^2 + month^2 = year^2 ----------------------
@@ -171,8 +179,6 @@ export default function YourDate() {
   // equation ---------------------------------------------------
 
   const isEquation = () => {
-
-   
     let day = parseInt(dayStr);
     let month = parseInt(monthStr);
     let year = parseInt(yearStr.slice(-2, ));
