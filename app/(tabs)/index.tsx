@@ -1,6 +1,6 @@
 import { Collapsible } from "@/components/Collapsible";
 import { useState } from "react";
-import { Pressable, ScrollView, StyleSheet, Text, TextInput, View } from "react-native";
+import { Button, ScrollView, StyleSheet, Text, TextInput, View } from "react-native";
 
 
 // This is the screen we're returning
@@ -42,9 +42,9 @@ export default function YourDate() {
 
     if(parseInt(dayStr) < 32 && parseInt(dayStr) > 0 && Number.isInteger(parseInt(dayStr)) && dayStr !== ""){
       if(parseInt(dayStr) < 10 && dayStr[0] !== "0") {
-        setDayStr("0" + dayStr);
+        setDayStr("0" + parseInt(dayStr).toString());
       } else {
-        setDayStr(dayStr);
+        setDayStr(parseInt(dayStr).toString());
       }
     } else {
       setError("your day is not valid")
@@ -54,9 +54,9 @@ export default function YourDate() {
 
     if(parseInt(monthStr) < 13 && parseInt(monthStr) > 0 && Number.isInteger(parseInt(monthStr)) && monthStr !== ""){
       if(parseInt(monthStr) < 10 && monthStr[0] !== "0") {
-        setMonthStr("0" + monthStr);
+        setMonthStr("0" + parseInt(monthStr).toString());
       } else {
-        setMonthStr(monthStr);
+        setMonthStr(parseInt(monthStr).toString());
       }
     } else {
       setError("your month is not valid")
@@ -66,9 +66,10 @@ export default function YourDate() {
 
     if(parseInt(yearStr) < 2501 && parseInt(yearStr) > 0 && Number.isInteger(parseInt(yearStr)) && yearStr !== ""){
       if(parseInt(yearStr) < 10 && yearStr[0] !== "0") {
-        setYearStr("0" + yearStr);
+        setYearStr("0" + parseInt(yearStr).toString());
       } else {
-        setYearStr(yearStr);
+
+        setYearStr(parseInt(yearStr).toString());
       }
     } else {
       setError("your year is not valid")
@@ -124,7 +125,7 @@ export default function YourDate() {
   const isPyth = () => {
     let day = parseInt(dayStr);
     let month = parseInt(monthStr);
-    let year = parseInt(yearStr.slice(-2, ));
+    let year = parseInt(yearStr[-2] + yearStr[-1]);
     
     let quared = (day * day) + (month * month);
     return quared === year * year;
@@ -171,7 +172,7 @@ export default function YourDate() {
   const isEquation = () => {
     let day = parseInt(dayStr);
     let month = parseInt(monthStr);
-    let year = parseInt(yearStr.slice(-2, ));
+    let year = parseInt(yearStr[-2] + yearStr[-1]);
 
     if(day + month === year) {
       setSumStr("plus");
@@ -258,7 +259,8 @@ export default function YourDate() {
         </View> 
         {/* end of date-holder */}
         {/* Submit Button */}
-        <Pressable style={styles.button} onPress={isSubmitted}>Submit</Pressable>
+        {/* <Pressable style={styles.button} onPress={isSubmitted}>Submit</Pressable> */}
+        <Button title="Submit" onPress={isSubmitted}></Button>
       </View>
       {/* end of input-section */}
       {/* Start Conditional Dropdowns */}
@@ -460,15 +462,14 @@ export default function YourDate() {
       alignItems: "center",
       justifyContent: "center",
       backgroundColor: "#c1f3b4ff",
-      borderColor: "#4f4e4eff",
+      borderColor: "#5b5959ff",
       borderStyle: "solid",
       borderWidth: 3,
       paddingInline: 10,
       borderRadius: 5,
       fontWeight: "semibold",
       fontFamily: "sans-serif",
-    },
-    
+    }
 });
   
 
