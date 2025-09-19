@@ -13,7 +13,6 @@ export default function YourDate() {
 
 
   // sets our input
-  const [numString, setNumString] = useState(""); // our final string
   const [dayStr, setDayStr] = useState(""); // for the day
   const [monthStr, setMonthStr] = useState(""); // for the month
   const [yearStr, setYearStr] = useState(""); // for the year
@@ -77,10 +76,10 @@ export default function YourDate() {
       return false;
     }
     setValid(true);
-    setNumString(monthStr + dayStr + yearStr)
     
 
     if(valid) {
+      setError("");
       setPrime(isPrime());
       setPali(isPalindrome());
       setArm(isArmstrong());
@@ -94,12 +93,14 @@ export default function YourDate() {
   // Valid Input --------------------------------------------------
 
 
+
+
   // -------------- Here are the conditions for our date --------------------
 
 
   // Prime -----------------------------------------
   const isPrime = () => {
-    let nume = parseInt(numString);
+    let nume = parseInt(monthStr + dayStr + yearStr);
     for (let i = 2; i < Math.sqrt(nume); i++) {
       if (Number.isInteger(nume / i) === true) {
         return false;
@@ -111,7 +112,7 @@ export default function YourDate() {
   // Palindrome -------------------------
   const isPalindrome = () => {
     //remove leading spaces
-    const numClean = numString.trim();
+    const numClean = (monthStr + dayStr + yearStr).trim();
     
     // reversing the string
     const reverse = numClean.split('').reverse().join("");
@@ -132,7 +133,7 @@ export default function YourDate() {
   // Perfect Power --------------------------------------
   const isPerPower = () => {
     //remove leading spaces
-    const numClean = numString.trim();
+    const numClean = (monthStr + dayStr + yearStr).trim();
     // return empty
 
     let num = parseInt(numClean);
@@ -153,7 +154,7 @@ export default function YourDate() {
   // Armstrong -----------------------------------------------------
 
   const isArmstrong = () => {
-    let numClean = numString.trim();
+    let numClean = (monthStr + dayStr + yearStr).trim();
     if(numClean[0] === "0") {
       numClean = numClean.slice(1, );
     }
@@ -240,7 +241,7 @@ export default function YourDate() {
             <Text>Day</Text>
             <TextInput style={styles.input}
             value={dayStr}
-            onChangeText={(text) => setDayStr(text)}
+            onChangeText={setDayStr}
             ></TextInput>
           </View>
           {/* end of day input */}
