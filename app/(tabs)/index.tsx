@@ -36,10 +36,11 @@ export default function YourDate() {
   //Runs Our Code Submitted
   const isSubmitted = () => {
     setValid(false);
+    setError("");
     isThisGood()
+    setNumString(monthStr + dayStr + yearStr)
 
     if(valid) {
-      setNumString(monthStr + dayStr + yearStr)
       setPrime(isPrime());
       setPali(isPalindrome());
       setArm(isArmstrong());
