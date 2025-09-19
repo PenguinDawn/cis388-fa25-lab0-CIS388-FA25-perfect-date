@@ -41,9 +41,11 @@ export default function YourDate() {
     setYearStr(yearStr.trim());
 
     if(parseInt(dayStr) < 32 && parseInt(dayStr) > 0 && Number.isInteger(parseInt(dayStr)) && dayStr !== ""){
-      if(parseInt(dayStr) < 10 && dayStr[0] !== "0") {
+      if(parseInt(dayStr) < 10) {
         setDayStr("0" + parseInt(dayStr).toString());
-      } else {
+
+      } else
+        {
         setDayStr(parseInt(dayStr).toString());
       }
     } else {
@@ -53,7 +55,7 @@ export default function YourDate() {
     }
 
     if(parseInt(monthStr) < 13 && parseInt(monthStr) > 0 && Number.isInteger(parseInt(monthStr)) && monthStr !== ""){
-      if(parseInt(monthStr) < 10 && monthStr[0] !== "0") {
+      if(parseInt(monthStr) < 10) {
         setMonthStr("0" + parseInt(monthStr).toString());
       } else {
         setMonthStr(parseInt(monthStr).toString());
@@ -65,7 +67,7 @@ export default function YourDate() {
     }
 
     if(parseInt(yearStr) < 2501 && parseInt(yearStr) > 0 && Number.isInteger(parseInt(yearStr)) && yearStr !== ""){
-      if(parseInt(yearStr) < 10 && yearStr[0] !== "0") {
+      if(parseInt(yearStr) < 10) {
         setYearStr("0" + parseInt(yearStr).toString());
       } else {
 
@@ -101,7 +103,7 @@ export default function YourDate() {
 
   // Prime -----------------------------------------
   const isPrime = () => {
-    let nume = parseInt(monthStr + dayStr + yearStr);
+    let nume = parseInt(monthStr + dayStr + yearStr)
     for (let i = 2; i < Math.sqrt(nume); i++) {
       if (Number.isInteger(nume / i) === true) {
         return false;
@@ -156,9 +158,7 @@ export default function YourDate() {
 
   const isArmstrong = () => {
     let numClean = (monthStr + dayStr + yearStr).trim();
-    if(numClean[0] === "0") {
-      numClean = numClean.slice(1, );
-    }
+
     // Squaring it
     let lastNum = 0;
     for(let i = 0; i < numClean.length; i++) {
