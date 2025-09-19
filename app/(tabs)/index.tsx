@@ -36,7 +36,6 @@ export default function YourDate() {
   //Runs Our Code Submitted
   const isSubmitted = () => {
     // resetting our previous things
-    setNumString("");
     setValid(isThisGood());
 
     if(valid) {
@@ -92,6 +91,7 @@ export default function YourDate() {
       setError("your year is not valid")
       return false;
     }
+
     return true;
 
   }
@@ -101,14 +101,7 @@ export default function YourDate() {
 
   // Prime -----------------------------------------
   const isPrime = () => {
-    //remove leading spaces
-    const numClean = numString.trim();
-    // return empty
-    if (numClean === "") {
-      return false;
-    }
-
-    let nume = parseInt(numClean)
+    let nume = parseInt(numString);
   
     for (let i = 2; i <= Math.sqrt(nume); i++) {
       if (nume % i === 0) {
@@ -121,11 +114,8 @@ export default function YourDate() {
   // Palindrome -------------------------
   const isPalindrome = () => {
     //remove leading spaces
-    const numClean = numString.trim();
-    // return empty
-    if (numClean === "") {
-      return false;
-    }
+    const numClean = numString;
+ 
     // reversing the string
     const reverse = numClean.split('').reverse().join("");
     // returning a booleon
@@ -134,27 +124,14 @@ export default function YourDate() {
 
   // Pythagorean day^2 + month^2 = year^2 ----------------------
   const isPyth = () => {
-
     //remove leading spaces
-    const numClean = numString.trim();
+    const numClean = numString;
+
     // return empty
-    if (numClean === "") {
-      return false;
-    }
-    // return empty
-    let day;
-    let month;
-    let year;
-    if(numClean.length === 5) {
-       day = parseInt(numClean.slice(0, 1));
-       month = parseInt(numClean.slice(1, 3));
-       year = parseInt(numClean.slice(-2, ));
-    }
-    else {
-       day = parseInt(numClean.slice(0, 2));
-       month = parseInt(numClean.slice(2, 4));
-       year = parseInt(numClean.slice(-2, ));
-    }
+ 
+    let day = parseInt(numClean.slice(0, 2));
+    let month = parseInt(numClean.slice(2, 4));
+    let year = parseInt(numClean.slice(-2, ));
     
     
     let quared = (day * day) + (month * month);
@@ -164,11 +141,8 @@ export default function YourDate() {
   // Perfect Power --------------------------------------
   const isPerPower = () => {
     //remove leading spaces
-    const numClean = numString.trim();
+    const numClean = numString;
     // return empty
-    if (numClean === "") {
-      return false;
-    }
 
     let num = parseInt(numClean);
     
@@ -188,9 +162,9 @@ export default function YourDate() {
   // Armstrong -----------------------------------------------------
 
   const isArmstrong = () => {
-    const numClean = numString.trim();
-    if (numClean === "") {
-      return false;
+    let numClean = numString;
+    if(numString[0] === "0") {
+      numClean = numString.slice(1, );
     }
     // Squaring it
     let lastNum = 0;
@@ -204,23 +178,11 @@ export default function YourDate() {
 
   const isEquation = () => {
     const numClean = numString.trim();
-    // return empty
-    if (numClean === "") {
-      return false;
-    }
-    let day;
-    let month;
-    let year;
-    if(numClean.length === 5) {
-       day = parseInt(numClean.slice(0, 1));
-       month = parseInt(numClean.slice(1, 3));
-       year = parseInt(numClean.slice(-2, ));
-    }
-    else {
-       day = parseInt(numClean.slice(0, 2));
-       month = parseInt(numClean.slice(2, 4));
-       year = parseInt(numClean.slice(-2, ));
-    }
+
+   
+    let day = parseInt(numClean.slice(0, 2));
+    let month = parseInt(numClean.slice(2, 4));
+    let year = parseInt(numClean.slice(-2, ));
 
     if(day + month === year) {
       setSumStr("plus");
