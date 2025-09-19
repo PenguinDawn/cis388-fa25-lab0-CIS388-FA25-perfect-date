@@ -106,7 +106,7 @@ export default function YourDate() {
     let nume = parseInt(numString);
   
     for (let i = 2; i <= Math.sqrt(nume); i++) {
-      if (nume % i === 0) {
+      if (nume % i !== 0) {
         return false; // Found a divisor, not prime
       }
     }
@@ -116,13 +116,12 @@ export default function YourDate() {
   // Palindrome -------------------------
   const isPalindrome = () => {
     //remove leading spaces
-    const numClean = [...numString].toString();
+    const numClean = numString.trim();
     
- 
     // reversing the string
     const reverse = numClean.split('').reverse().join("");
     // returning a booleon
-    return reverse === numString;
+    return reverse === numClean;
 
     
   }
@@ -141,7 +140,7 @@ export default function YourDate() {
   // Perfect Power --------------------------------------
   const isPerPower = () => {
     //remove leading spaces
-    const numClean = [...numString].toString();
+    const numClean = numString.trim();
     // return empty
 
     let num = parseInt(numClean);
@@ -162,7 +161,7 @@ export default function YourDate() {
   // Armstrong -----------------------------------------------------
 
   const isArmstrong = () => {
-    let numClean = [...numString].toString();
+    let numClean = numString.trim();
     if(numClean[0] === "0") {
       numClean = numClean.slice(1, );
     }
