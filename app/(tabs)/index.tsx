@@ -105,8 +105,6 @@ export default function YourDate() {
   // Prime -----------------------------------------
   const isPrime = () => {
     let nume = parseInt(numString);
-    setError(numString)
-  
     for (let i = 2; i <= nume; i++) {
       if (nume % i !== 0) {
         return false; // Found a divisor, not prime
