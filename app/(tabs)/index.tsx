@@ -82,7 +82,6 @@ export default function YourDate() {
 
     if(parseInt(yearStr) < 2501 && parseInt(yearStr) > 0 && Number.isInteger(parseInt(yearStr)) && yearStr !== ""){
       if(parseInt(yearStr) < 10 && yearStr[0] !== "0") {
-        
         setYearStr("0" + yearStr);
       } else {
         setYearStr(yearStr);
@@ -124,14 +123,9 @@ export default function YourDate() {
 
   // Pythagorean day^2 + month^2 = year^2 ----------------------
   const isPyth = () => {
-    //remove leading spaces
-    const numClean = numString;
-
-    // return empty
- 
-    let day = parseInt(numClean.slice(0, 2));
-    let month = parseInt(numClean.slice(2, 4));
-    let year = parseInt(numClean.slice(-2, ));
+    let day = parseInt(dayStr);
+    let month = parseInt(monthStr);
+    let year = parseInt(yearStr.slice(-2, ));
     
     
     let quared = (day * day) + (month * month);
@@ -177,12 +171,11 @@ export default function YourDate() {
   // equation ---------------------------------------------------
 
   const isEquation = () => {
-    const numClean = numString.trim();
 
    
-    let day = parseInt(numClean.slice(0, 2));
-    let month = parseInt(numClean.slice(2, 4));
-    let year = parseInt(numClean.slice(-2, ));
+    let day = parseInt(dayStr);
+    let month = parseInt(monthStr);
+    let year = parseInt(yearStr.slice(-2, ));
 
     if(day + month === year) {
       setSumStr("plus");
@@ -212,15 +205,9 @@ export default function YourDate() {
   // Getting the colors! -------------------------------------------------
 
   const runColor = () => {
-    const numClean = numString.trim();
-    // return empty
-    if (numClean === "") {
-      return false;
-    }
-
-    let day = numClean.slice(0, 2);
-    let month = numClean.slice(2, 4);
-    let year = numClean.slice(-2, );
+    let day = dayStr;
+    let month = monthStr;
+    let year = yearStr.slice(-2, );
 
     setColor("#" + day + month + year)
     setColor2("#" + month + day + year)
