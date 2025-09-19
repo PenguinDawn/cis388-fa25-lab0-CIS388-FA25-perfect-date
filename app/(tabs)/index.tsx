@@ -37,24 +37,7 @@ export default function YourDate() {
   const isSubmitted = () => {
     setValid(false);
     setError("");
-    isThisGood()
 
-    if(valid) {
-      setNumString(monthStr + dayStr + yearStr)
-      setPrime(isPrime());
-      setPali(isPalindrome());
-      setArm(isArmstrong());
-      setEqua(isEquation());
-      setPyth(isPyth());
-      setPerPow(isPerPower());
-      runColor();
-    }
-  }
-
-  // Valid Input --------------------------------------------------
-
-
-  const isThisGood = () => {
     setDayStr(dayStr.trim());
     setMonthStr(monthStr.trim());
     setYearStr(yearStr.trim());
@@ -94,10 +77,24 @@ export default function YourDate() {
       setValid(false);
       return false;
     }
-
     setValid(true);
+    
 
+    if(valid) {
+      setError("we made if");
+      setNumString(monthStr + dayStr + yearStr)
+      setPrime(isPrime());
+      setPali(isPalindrome());
+      setArm(isArmstrong());
+      setEqua(isEquation());
+      setPyth(isPyth());
+      setPerPow(isPerPower());
+      runColor();
+    }
   }
+
+  // Valid Input --------------------------------------------------
+
 
   // -------------- Here are the conditions for our date --------------------
 
