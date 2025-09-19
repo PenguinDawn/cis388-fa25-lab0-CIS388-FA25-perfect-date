@@ -81,7 +81,6 @@ export default function YourDate() {
     
 
     if(valid) {
-      setError("we made if");
       setNumString(monthStr + dayStr + yearStr)
       setPrime(isPrime());
       setPali(isPalindrome());
@@ -102,7 +101,8 @@ export default function YourDate() {
   // Prime -----------------------------------------
   const isPrime = () => {
     let nume = parseInt(numString);
-    for (let i = 2; i <= nume; i++) {
+    setError(numString)
+    for (let i = 2; i < nume; i++) {
       if (nume % i !== 0) {
         return false; // Found a divisor, not prime
       }
